@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ümmügülsün Türkmen | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+    :root {
+      --primary: #7E67FF;
+      --secondary: #0099FF;
+      --dark: #080808;
+      --light: #ffffff;
+      --accent: #FF3366;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .cursor {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      position: fixed;
+      pointer-events: none;
+      mix-blend-mode: difference;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+
+    .noise {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #090909, #121212);
+      z-index: -1;
+    }
+
+    .gradient-circle {
+      position: absolute;
+      width: 60vw;
+      height: 60vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--primary) 0%, rgba(83, 52, 255, 0) 70%);
+      opacity: 0.2;
+      filter: blur(80px);
+      animation: float 20s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(5%, 10%); }
+      50% { transform: translate(-5%, -5%); }
+      75% { transform: translate(-10%, 5%); }
+    }
+
+    .circle1 { top: -20%; left: -10%; }
+    .circle2 { bottom: -30%; right: -10%; background: radial-gradient(circle, var(--secondary) 0%, rgba(0, 153, 255, 0) 70%); }
+
+    .header-content {
+      text-align: center;
+      z-index: 2;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 5rem;
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+    }
+
+    .header-title {
+      position: relative;
+    }
+
+    .title-mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--dark);
+      transform-origin: left;
+    }
+
+    .header-subtitle {
+      font-size: 1.2rem;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav.scrolled {
+      background-color: rgba(8, 8, 8, 0.9);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--light);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: var(--light);
+      text-decoration: none;
+      position: relative;
+      padding: 0.5rem 0;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--secondary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--secondary);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .section {
+      padding: 8rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-content {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+
+    .education-item, .experience-item, .project-item {
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .education-date, .experience-date {
+      color: var(--secondary);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .education-title, .experience-title, .project-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background-color: rgba(255, 255, 255, 0.03);
+      border-radius: 15px;
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+      cursor: pointer;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(126, 103, 255, 0.2);
+    }
+
+    .project-card:hover::before {
+      opacity: 0.1;
+    }
+
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .skill-tag {
+      background-color: rgba(126, 103, 255, 0.1);
+      color: var(--secondary);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      transform: translateY(-3px);
+      background-color: rgba(126, 103, 255, 0.2);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .contact-info {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+
+    .contact-item {
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(126, 103, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--secondary);
+      font-size: 1.2rem;
+    }
+
+    .contact-form {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: var(--light);
+      font-family: 'Space Grotesk', sans-serif;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: var(--light);
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.7s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 153, 255, 0.3);
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    footer {
+      padding: 4rem 2rem;
+      text-align: center;
+      background-color: rgba(8, 8, 8, 0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px);
+      background-color: var(--primary);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: var(--light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 99;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 3rem;
+      }
+      
+      .about-grid, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .section {
+        padding: 4rem 1.5rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* Animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cursor"></div>
+  <div class="noise"></div>
+
+  <nav class="nav">
+    <a href="#" class="nav-logo">ÜT</a>
+    <div class="nav-links">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#education" class="nav-link">Education</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="header-background"></div>
+    <div class="gradient-circle circle1"></div>
+    <div class="gradient-circle circle2"></div>
+    
+    <div class="header-content">
+      <div class="header-title">
+        <h1>Ümmügülsün Türkmen</h1>
+        <div class="title-mask"></div>
+      </div>
+      <p class="header-subtitle">Computer Engineering Student | Creative Developer</p>
+    </div>
+  </header>
+
+  <section id="about" class="section">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="/api/placeholder/400/400" alt="Ümmügülsün Türkmen">
+      </div>
+      <div class="about-content">
+        <p>I'm a curious and passionate Computer Engineering student with hands-on experience in object-oriented programming, image processing, and collaborative development projects.</p>
+        <p>Focused on building strong foundations in software while enhancing both technical and soft skills, I love exploring new technologies and solving complex problems.</p>
+        <p>Currently pursuing my degree in Istanbul, I'm constantly looking for opportunities to grow and collaborate on innovative projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="section">
+    <h2 class="section-title">Education</h2>
+    
+    <div class="education-item">
+      <div class="education-date">2023 – 2027</div>
+      <h3 class="education-title">BSc in Computer Engineering</h3>
+      <p>Istanbul Health and Technology University</p>
+    </div>
+    
+    <div class="education-item">
+      <div class="education-date">2024 – 2026</div>
+      <h3 class="education-title">Associate Degree in Computer Programming</h3>
+      <p>Dokuz Eylul University</p>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <h2 class="section-title">Experience</h2>
+    
+    <div class="experience-item">
+      <div class="experience-date">July 2024 – October 2024</div>
+      <h3 class="experience-title">Merchandiser — Türkmenler Socks</h3>
+      <p>Istanbul</p>
+      <ul>
+        <li>Managed product inventory and merchandising at a family-run business</li>
+        <li>Improved customer-facing display performance</li>
+        <li>Gained experience in multitasking, teamwork, and logistics</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <h2 class="section-title">Projects</h2>
+    
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3 class="project-title">Adventure Game</h3>
+        <p>Text-based OOP project with modular architecture, inheritance, and polymorphism implemented in Java.</p>
+        <div class="skills-container">
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">OOP</span>
+          <span class="skill-tag">Game Design</span>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <h3 class="project-title">Image Processing App</h3>
+        <p>Collaborative tool with filters, transforms, and basic computer vision features. (Ongoing)</p>
+        <div class="skills-container">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">OpenCV</span>
+          <span class="skill-tag">Image Processing</span>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <h3 class="project-title">Coursework Repository</h3>
+        <p>Structured GitHub repo with OOP and image processing assignments</p>
+        <div class="skills-container">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Documentation</span>
+          <span class="skill-tag">Multiple Languages</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <h2 class="section-title">Skills</h2>
+    
+    <div class="skills-container fade-up">
+      <span class="skill-tag">Java</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">C</span>
+      <span class="skill-tag">C++</span>
+      <span class="skill-tag">Git</span>
+      <span class="skill-tag">GitHub</span>
+      <span class="skill-tag">IntelliJ IDEA</span>
+      <span class="skill-tag">VSCode</span>
+      <span class="skill-tag">OOP</span>
+      <span class="skill-tag">Data Structures</span>
+      <span class="skill-tag">Image Processing</span>
+      <span class="skill-tag">Collaboration</span>
+      <span class="skill-tag">Time Management</span>
+      <span class="skill-tag">Communication</span>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2 class="section-title">Get in Touch</h2>
+    
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <h3>Email</h3>
+            <p><a href="mailto:ummugulsum1881@gmail.com">ummugulsum1881@gmail.com</a></p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <h3>Phone</h3>
+            <p>+90 552 283 48 95</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">🔗</div>
+          <div>
+            <h3>GitHub</h3>
+            <p><a href="https://github.com/ummugulsunn" target="_blank">ummugulsunn</a></p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div>
+            <h3>LinkedIn</h3>
+            <p><a href="https://www.linkedin.com/in/ümmügülsün-t-306904257/" target="_blank">Ümmügülsün T.</a></p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Your Name">
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="Your Email">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" placeholder="Your Message"></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="#" class="social-link">📧</a>
+        <a href="#" class="social-link">🔗</a>
+        <a href="#" class="social-link">💼</a>
+      </div>
+      <p>© 2025 Ümmügülsün Türkmen. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="back-to-top">↑</div>
+
+  <script>
+    // Custom cursor
+    const cursor = document.querySelector('.cursor');
+    
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    
+    document.addEventListener('mousedown', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+    });
+    
+    document.addEventListener('mouseup', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+
+    // Initialize GSAP animations
+    document.addEventListener("DOMContentLoaded", function() {
+      // Header animations
+      gsap.to(".title-mask", {
+        scaleX: 0,
+        duration: 1.5,
+        ease: "power4.inOut"
+      });
+      
+      gsap.to(".header-subtitle", {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 1,
+        ease: "power3.out"
+      });
+      
+      // Navigation scroll effect
+      window.addEventListener('scroll', () => {
+        const nav = document.querySelector('.nav');
+        const backToTop = document.querySelector('.back-to-top');
+        
+        if (window.scrollY > 100) {
+          nav.classList.add('scrolled');
+          backToTop.classList.add('visible');
+        } else {
+          nav.classList.remove('scrolled');
+          backToTop.classList.remove('visible');
+        }
+      });
+      
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        });
+      });
+      
+      // Back to top button
+      document.querySelector('.back-to-top').addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Register ScrollTrigger
+      gsap.registerPlugin(ScrollTrigger);
+      
+      // About section animations
+      gsap.to(".about-content", {
+        scrollTrigger: {
+          trigger: ".about-content",
+          start: "top 80%",
+          toggleActions: "play none none none"
+        },
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power3.out"
+      });
+      
+      // Education and Experience items animations
+      gsap.utils.toArray(".education-item, .experience-item").forEach(item => {
+        gsap.to(item, {
+          scrollTrigger: {
+            trigger: item,
+            start: "top 80%",
+            toggleActions: "play none none none"
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out"
+        });
+      });
+      
+      // Project cards animations
+      gsap.utils.toArray(".project-card").forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          },
+          y: 50,
+          opacity: 0,
+          duration: 0.6,
+          delay: i * 0.1,
+          ease: "power3.out"
+        });
+      });
+      
+      // Skills tags animations
+      gsap.from(".skill-tag", {
+        scrollTrigger: {
+          trigger: ".skills-container",
+          start: "top 80%",
+          toggleActions: "play none none none"
+        },
+        scale: 0.8,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.05,
+        ease: "back.out(1.7)"
+      });
+      
+      // Contact section animations
+      gsap.to(".contact-info", {
+        scrollTrigger: {
+          trigger: ".contact-info",
+          start: "top 80%",
+          toggleActions: "play none none none"
+        },
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power3.out"
+      });
+      
+      gsap.to(".contact-form", {
+        scrollTrigger: {
+          trigger: ".contact-form",
+          start: "top 80%",
+          toggleActions: "play none none none"
+        },
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power3.out"
+      });
+      
+      // Fade up elements
+      gsap.utils.toArray(".fade-up").forEach(element => {
+        gsap.to(element, {
+          scrollTrigger: {
+            trigger: element,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out"
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
