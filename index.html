@@ -72,10 +72,29 @@
       transition-delay: 0 !important;
     }
 
-    /* Exclude gradients and animations from sudden transitions */
+    /* Prioritize specific transitions for better performance */
+    .theme-transition body,
+    .theme-transition .header-background,
+    .theme-transition .nav,
+    .theme-transition .title-mask,
+    .theme-transition .social-link,
+    .theme-transition .project-card,
+    .theme-transition .blog-card,
+    .theme-transition .skill-category,
+    .theme-transition footer,
+    .theme-transition .form-input,
+    .theme-transition .contact-item {
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out !important;
+    }
+
+    /* Exclude problematic elements from heavy transitions */
     .theme-transition .gradient-circle,
-    .theme-transition .header-background {
+    .theme-transition .header-background,
+    .theme-transition .cursor,
+    .theme-transition [class*="animation"],
+    .theme-transition .skill-progress {
       transition: opacity 0.3s ease-in-out !important;
+      transition-property: opacity !important;
     }
 
     .cursor {
@@ -88,6 +107,7 @@
       mix-blend-mode: difference;
       z-index: 9999;
       transform: translate(-50%, -50%);
+      transition: background-color 0.3s ease, transform 0.1s ease;
     }
 
     .noise {
@@ -567,9 +587,18 @@
     footer {
       padding: 4rem 2rem;
       text-align: center;
-      background-color: rgba(8, 8, 8, 0.8);
+      background-color: var(--bg-secondary);
       position: relative;
       overflow: hidden;
+      transition: background-color 0.3s ease;
+    }
+    
+    [data-theme="dark"] footer {
+      background-color: rgba(8, 8, 8, 0.8);
+    }
+    
+    [data-theme="light"] footer {
+      background-color: rgba(245, 245, 245, 0.9);
     }
 
     .footer-content {
@@ -686,12 +715,14 @@
     }
 
     ::-webkit-scrollbar-track {
-      background: var(--dark);
+      background: var(--bg-secondary);
+      transition: background-color 0.3s ease;
     }
 
     ::-webkit-scrollbar-thumb {
       background: var(--primary);
       border-radius: 5px;
+      transition: background-color 0.3s ease;
     }
 
     ::-webkit-scrollbar-thumb:hover {
@@ -1104,6 +1135,10 @@
       transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
       font-size: 1.2rem;
+    }
+    
+    [data-theme="light"] .back-to-top {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .back-to-top.visible {
@@ -1792,6 +1827,11 @@ gsap.utils.toArray("#certifications .experience-item").forEach(item => {
     window.addEventListener('load', () => {
       const loader = document.querySelector('.loader');
       loader.classList.add('hidden');
+      
+      // Ensure theme is properly applied on load
+      const savedTheme = localStorage.getItem('theme') || 
+                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
     });
 
     // Scroll progress
@@ -1949,17 +1989,31 @@ gsap.utils.toArray("#certifications .experience-item").forEach(item => {
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       
+      // Update card shadows for any hovered elements
+      document.querySelectorAll('.project-card:hover, .blog-card:hover').forEach(card => {
+        if (newTheme === 'light') {
+          card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+          card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+        }
+      });
+      
       // Remove transition class after transition completes
       setTimeout(() => {
         document.documentElement.classList.remove('theme-transition');
-      }, 300);
+      }, 400); // Slightly longer timeout for complete transitions
     });
 
     // Add hover effect for project and blog cards
     document.querySelectorAll('.project-card, .blog-card').forEach(card => {
       card.addEventListener('mouseenter', () => {
         card.style.transform = 'translateY(-5px)';
-        card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (currentTheme === 'light') {
+          card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+          card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+        }
       });
       
       card.addEventListener('mouseleave', () => {
