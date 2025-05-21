@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <base href="/ummugulsun-portfolio/" />
   <meta name="description" content="Ümmügülsün Türkmen - Computer Engineering Student and Creative Developer specializing in web development, image processing, and software engineering." />
   <meta name="keywords" content="Ümmügülsün Türkmen, Computer Engineering, Software Development, Web Development, Image Processing, Istanbul" />
   <meta name="author" content="Ümmügülsün Türkmen" />
@@ -597,11 +596,11 @@
   </style>
 
   <!-- Defer non-critical CSS -->
-  <link rel="stylesheet" href="/ummugulsun-portfolio/styles.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="./styles.css" media="print" onload="this.media='all'">
   
   <!-- Fallback for CSS loading -->
   <noscript>
-    <link rel="stylesheet" href="/ummugulsun-portfolio/styles.css">
+    <link rel="stylesheet" href="./styles.css">
   </noscript>
 
   <!-- Preload critical images -->
@@ -621,9 +620,9 @@
   <!-- Add module/nomodule pattern for better browser support -->
   <script type="module">
     // Modern browsers
-    import { initAnimations } from '/ummugulsun-portfolio/js/animations.js';
-    import { initForm } from '/ummugulsun-portfolio/js/form.js';
-    import { initNavigation } from '/ummugulsun-portfolio/js/navigation.js';
+    import { initAnimations } from './js/animations.js';
+    import { initForm } from './js/form.js';
+    import { initNavigation } from './js/navigation.js';
     
     document.addEventListener('DOMContentLoaded', () => {
       initAnimations();
@@ -637,9 +636,9 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Load legacy scripts
       const scripts = [
-        '/ummugulsun-portfolio/js/animations.legacy.js',
-        '/ummugulsun-portfolio/js/form.legacy.js',
-        '/ummugulsun-portfolio/js/navigation.legacy.js'
+        './js/animations.legacy.js',
+        './js/form.legacy.js',
+        './js/navigation.legacy.js'
       ];
       
       scripts.forEach(src => {
