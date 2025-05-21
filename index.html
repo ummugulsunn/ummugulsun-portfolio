@@ -1089,97 +1089,151 @@
 
     .blog-section {
       margin-top: 4rem;
+      padding: 2rem 0;
     }
 
     .blog-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
     }
 
     .blog-card {
       background: var(--card-bg);
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
       text-decoration: none;
       color: var(--text-primary);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
 
     .blog-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary);
     }
 
     .blog-image {
       width: 100%;
-      height: 200px;
+      height: 220px;
       overflow: hidden;
+      position: relative;
+    }
+
+    .blog-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
     }
 
     .blog-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
+      transition: transform 0.5s ease;
     }
 
     .blog-card:hover .blog-image img {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
     .blog-content {
-      padding: 1.5rem;
-    }
-
-    .blog-content h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-primary);
-    }
-
-    .blog-content p {
-      color: var(--text-secondary);
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-      line-height: 1.6;
+      padding: 2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .blog-meta {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 0.5rem;
-      font-size: 0.8rem;
-      color: var(--text-secondary);
+      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
     }
 
     .blog-date {
       color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .blog-date::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--primary);
+      border-radius: 50%;
     }
 
     .blog-category {
       color: var(--primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.8rem;
+    }
+
+    .blog-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .blog-content p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      flex-grow: 1;
     }
 
     .blog-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.75rem;
+      margin-top: auto;
     }
 
-    .tag {
+    .blog-tags .tag {
+      background: var(--card-bg);
+      color: var(--primary);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      border: 1px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .blog-tags .tag:hover {
       background: var(--primary);
       color: var(--light);
-      padding: 0.25rem 0.75rem;
-      border-radius: 50px;
-      font-size: 0.8rem;
     }
 
     @media (max-width: 768px) {
-      .project-grid, .blog-grid {
+      .blog-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .blog-image {
+        height: 200px;
+      }
+      
+      .blog-content {
+        padding: 1.5rem;
       }
     }
 
@@ -1671,11 +1725,12 @@
   </footer>
 
   <section id="blog" class="section">
-    <h2 class="section-title">Blog</h2>
+    <h2 class="section-title">Technical Blog</h2>
+    <p class="section-description">Sharing insights and experiences in software development, with a focus on React Native, TypeScript, and modern web technologies.</p>
     <div class="blog-grid">
       <a href="blog/getting-started-with-java.html" class="blog-card">
         <div class="blog-image">
-          <img src="https://i.imgur.com/blog1.jpg" alt="Java Programming">
+          <img src="images/blog/java-guide.jpg" alt="Java Programming" loading="lazy">
         </div>
         <div class="blog-content">
           <div class="blog-meta">
@@ -1683,45 +1738,48 @@
             <span class="blog-category">Programming</span>
           </div>
           <h3>Getting Started with Java: A Beginner's Guide</h3>
-          <p>Learn the fundamentals of Java programming and start your journey to becoming a Java developer.</p>
+          <p>A comprehensive guide to Java fundamentals, covering core concepts, best practices, and practical examples for aspiring developers.</p>
           <div class="blog-tags">
             <span class="tag">Java</span>
-            <span class="tag">Beginners</span>
+            <span class="tag">Programming Fundamentals</span>
+            <span class="tag">OOP</span>
           </div>
         </div>
       </a>
 
       <a href="blog/react-native-tips.html" class="blog-card">
         <div class="blog-image">
-          <img src="https://i.imgur.com/blog2.jpg" alt="React Native Development">
+          <img src="images/blog/react-native.jpg" alt="React Native Development" loading="lazy">
         </div>
         <div class="blog-content">
           <div class="blog-meta">
             <span class="blog-date">Feb 10, 2024</span>
             <span class="blog-category">Mobile Development</span>
           </div>
-          <h3>Essential React Native Tips for Better Performance</h3>
-          <p>Discover best practices and tips to optimize your React Native applications for better performance.</p>
+          <h3>Essential React Native Performance Optimization</h3>
+          <p>Deep dive into React Native performance optimization techniques, including memory management, render optimization, and state management best practices.</p>
           <div class="blog-tags">
             <span class="tag">React Native</span>
             <span class="tag">Performance</span>
+            <span class="tag">Mobile</span>
           </div>
         </div>
       </a>
 
       <a href="blog/supabase-authentication.html" class="blog-card">
         <div class="blog-image">
-          <img src="https://i.imgur.com/blog3.jpg" alt="Supabase Authentication">
+          <img src="images/blog/supabase-auth.jpg" alt="Supabase Authentication" loading="lazy">
         </div>
         <div class="blog-content">
           <div class="blog-meta">
             <span class="blog-date">Feb 5, 2024</span>
             <span class="blog-category">Backend</span>
           </div>
-          <h3>Implementing Authentication with Supabase</h3>
-          <p>A comprehensive guide to implementing secure authentication in your applications using Supabase.</p>
+          <h3>Secure Authentication with Supabase</h3>
+          <p>Learn how to implement robust authentication in your applications using Supabase, including social auth, row-level security, and best practices.</p>
           <div class="blog-tags">
             <span class="tag">Supabase</span>
+            <span class="tag">Security</span>
             <span class="tag">Authentication</span>
           </div>
         </div>

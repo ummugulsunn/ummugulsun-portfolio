@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[Blog Post Title] - Ümmügülsün Türkmen</title>
+  <meta name="description" content="[Brief description of the blog post]">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/prism.css">
+  <style>
+    :root {
+      --primary: #7E67FF;
+      --secondary: #0099FF;
+      --dark: #080808;
+      --light: #ffffff;
+      --accent: #FF3366;
+      --bg-primary: var(--dark);
+      --bg-secondary: #121212;
+      --text-primary: var(--light);
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --code-bg: #1E1E1E;
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f5f5;
+      --text-primary: #080808;
+      --text-secondary: rgba(0, 0, 0, 0.7);
+      --card-bg: rgba(0, 0, 0, 0.05);
+      --code-bg: #f5f5f5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      transform: translateX(-5px);
+    }
+
+    .back-link svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 0.5rem;
+    }
+
+    .blog-header {
+      margin-bottom: 4rem;
+    }
+
+    .blog-title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.2;
+    }
+
+    .blog-meta {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+    }
+
+    .blog-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .blog-meta-item svg {
+      width: 18px;
+      height: 18px;
+      opacity: 0.8;
+    }
+
+    .blog-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .blog-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-content h2 {
+      font-size: 2rem;
+      margin: 3rem 0 1.5rem;
+      color: var(--primary);
+    }
+
+    .blog-content h3 {
+      font-size: 1.5rem;
+      margin: 2rem 0 1rem;
+      color: var(--secondary);
+    }
+
+    .blog-content ul,
+    .blog-content ol {
+      margin: 1rem 0 1.5rem 2rem;
+    }
+
+    .blog-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-content code {
+      background: var(--code-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: 'Inter', monospace;
+      font-size: 0.9em;
+    }
+
+    .blog-content pre {
+      background: var(--code-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    .blog-content pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .blog-content blockquote {
+      border-left: 4px solid var(--primary);
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .blog-content img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .blog-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 3rem;
+    }
+
+    .blog-tag {
+      background: var(--card-bg);
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 1px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .blog-tag:hover {
+      background: var(--primary);
+      color: var(--light);
+    }
+
+    .blog-navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--card-bg);
+    }
+
+    .blog-nav-link {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .blog-nav-link:hover {
+      transform: translateX(5px);
+    }
+
+    .blog-nav-link.prev:hover {
+      transform: translateX(-5px);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+
+      .blog-title {
+        font-size: 2.5rem;
+      }
+
+      .blog-meta {
+        gap: 1rem;
+      }
+
+      .blog-content {
+        font-size: 1rem;
+      }
+
+      .blog-content h2 {
+        font-size: 1.75rem;
+      }
+
+      .blog-content h3 {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html#blog" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Back to Blog
+    </a>
+
+    <article class="blog-content">
+      <header class="blog-header">
+        <h1 class="blog-title">[Blog Post Title]</h1>
+        <div class="blog-meta">
+          <div class="blog-meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            [Publication Date]
+          </div>
+          <div class="blog-meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+              <line x1="16" y1="8" x2="2" y2="22"></line>
+              <line x1="17.5" y1="15" x2="9" y2="15"></line>
+            </svg>
+            [Category]
+          </div>
+          <div class="blog-meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            [Read Time] min read
+          </div>
+        </div>
+      </header>
+
+      <!-- Blog content goes here -->
+      [Your blog content]
+
+      <footer>
+        <div class="blog-tags">
+          <a href="#" class="blog-tag">[Tag 1]</a>
+          <a href="#" class="blog-tag">[Tag 2]</a>
+          <a href="#" class="blog-tag">[Tag 3]</a>
+        </div>
+
+        <nav class="blog-navigation">
+          <a href="#" class="blog-nav-link prev">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Previous Post
+          </a>
+          <a href="#" class="blog-nav-link next">
+            Next Post
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </nav>
+      </footer>
+    </article>
+  </div>
+
+  <script src="../js/prism.js"></script>
+  <script>
+    // Add any additional JavaScript here
+  </script>
+</body>
+</html> 
