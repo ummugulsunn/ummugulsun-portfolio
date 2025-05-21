@@ -1045,60 +1045,41 @@
 
     .skill-name {
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.7rem;
+      align-items: center;
+      margin-bottom: 0.5rem;
       color: var(--text-primary);
       font-weight: 500;
       letter-spacing: 0.5px;
-    }
-    
-    .skill-name span:first-child {
       position: relative;
-      padding-left: 18px;
     }
     
-    .skill-name span:first-child::before {
+    .skill-name::before {
       content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
+      display: inline-block;
       width: 8px;
       height: 8px;
       border-radius: 50%;
+      background-color: var(--primary);
+      margin-right: 12px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    
+    .skill-item:hover .skill-name::before {
       background-color: var(--secondary);
+      transform: scale(1.2);
     }
     
-    .skill-name span:last-child {
-      font-weight: 600;
-      color: var(--primary);
-    }
-
-    .skill-level {
-      width: 100%;
-      height: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
-      overflow: hidden;
+    .skill-item {
       position: relative;
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-    }
-
-    .skill-progress {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      border-radius: 4px;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
     }
     
-    .skill-progress.animate {
-      transform: scaleX(1);
+    .skill-item:hover {
+      background-color: var(--card-bg);
+      transform: translateX(5px);
     }
     
     .skill-item.visible {
@@ -1283,6 +1264,65 @@
     .project-github a:hover {
       color: var(--primary);
     }
+
+    .project-wrapper {
+      margin-top: 3rem;
+    }
+
+    .project-heading {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .project-heading h3 {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      margin-right: 1.5rem;
+      font-weight: 600;
+    }
+
+    .project-heading-line {
+      flex-grow: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--primary), transparent);
+    }
+
+    .project-number {
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      opacity: 0.2;
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover .project-number {
+      opacity: 0.5;
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    .project-image {
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .project-heading h3 {
+        font-size: 1.2rem;
+      }
+      
+      .project-number {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 
@@ -1411,85 +1451,67 @@
 </section>
   <section id="projects" class="section">
     <h2 class="section-title">Projects</h2>
-    <p class="section-description">These are some of my featured projects that showcase my skills and experience in various technologies.</p>
-    <div class="project-grid">
-      <a href="projects/adventure-game.html" class="project-card">
-        <div class="project-image code">
-          <!-- Placeholder image will be replaced by a styled background with code icon -->
-          <img src="https://i.imgur.com/placeholder1.jpg" alt="Adventure Game Screenshot">
-        </div>
-        <div class="project-content">
-          <h3>Adventure Game</h3>
-          <p>A text-based adventure game implemented in Java, showcasing object-oriented programming principles and design patterns.</p>
-          <div class="project-meta">
-            <div class="project-year">2024</div>
-            <div class="project-github">
-              <a href="https://github.com/ummugulsunn/adventure-game" target="_blank" aria-label="View code on GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-              </a>
+    <p class="section-description">I focus on building software solutions that are both elegant and functional, leveraging modern technologies to solve real-world problems.</p>
+    
+    <div class="project-wrapper">
+      <div class="project-heading">
+        <h3>Featured Work</h3>
+        <div class="project-heading-line"></div>
+      </div>
+      
+      <div class="project-grid">
+        <a href="projects/adventure-game.html" class="project-card">
+          <div class="project-number">01</div>
+          <div class="project-image code">
+            <!-- Placeholder image replaced by a styled background with code icon -->
+          </div>
+          <div class="project-content">
+            <h3>Adventure Game</h3>
+            <p>A text-based adventure game implementing advanced object-oriented programming patterns and dynamic storytelling algorithms.</p>
+            <div class="project-meta">
+              <div class="project-year">2024</div>
+              <div class="project-github">
+                <a href="https://github.com/ummugulsunn/adventure-game" target="_blank" aria-label="View code on GitHub">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                    <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Java</span>
+              <span class="tag">OOP</span>
+              <span class="tag">Game</span>
             </div>
           </div>
-          <div class="project-tags">
-            <span class="tag">Java</span>
-            <span class="tag">OOP</span>
-            <span class="tag">Game</span>
-          </div>
-        </div>
-      </a>
+        </a>
 
-      <a href="projects/flower-tracker.html" class="project-card">
-        <div class="project-image mobile">
-          <!-- Placeholder image will be replaced by a styled background with mobile icon -->
-          <img src="https://i.imgur.com/placeholder2.jpg" alt="Flower Tracker App Screenshot">
-        </div>
-        <div class="project-content">
-          <h3>Flower Tracker</h3>
-          <p>A React Native mobile app for identifying and tracking flowers using AI, with Supabase backend integration.</p>
-          <div class="project-meta">
-            <div class="project-year">2024</div>
-            <div class="project-github">
-              <a href="https://github.com/ummugulsunn/flower-tracker" target="_blank" aria-label="View code on GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-              </a>
+        <a href="projects/flower-tracker.html" class="project-card">
+          <div class="project-number">02</div>
+          <div class="project-image mobile">
+            <!-- Placeholder image replaced by a styled background with mobile icon -->
+          </div>
+          <div class="project-content">
+            <h3>Flower Tracker</h3>
+            <p>A cross-platform mobile application leveraging AI for identifying plant species and providing care information through a cloud-backed database.</p>
+            <div class="project-meta">
+              <div class="project-year">2024</div>
+              <div class="project-github">
+                <a href="https://github.com/ummugulsunn/flower-tracker" target="_blank" aria-label="View code on GitHub">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                    <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span class="tag">React Native</span>
+              <span class="tag">AI</span>
+              <span class="tag">Supabase</span>
             </div>
           </div>
-          <div class="project-tags">
-            <span class="tag">React Native</span>
-            <span class="tag">AI</span>
-            <span class="tag">Supabase</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="projects/portfolio-website.html" class="project-card">
-        <div class="project-image web">
-          <!-- Placeholder image will be replaced by a styled background with web icon -->
-          <img src="https://i.imgur.com/placeholder3.jpg" alt="Portfolio Website Screenshot">
-        </div>
-        <div class="project-content">
-          <h3>Portfolio Website</h3>
-          <p>A modern, responsive portfolio website built with HTML, CSS, and JavaScript, featuring dark/light mode and smooth animations.</p>
-          <div class="project-meta">
-            <div class="project-year">2024</div>
-            <div class="project-github">
-              <a href="https://github.com/ummugulsunn/ummugulsun-portfolio" target="_blank" aria-label="View code on GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div class="project-tags">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JavaScript</span>
-          </div>
-        </div>
-      </a>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -1500,160 +1522,64 @@
       <div class="skill-category">
         <h3>Programming Languages</h3>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>Java</span>
-            <span>90%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 90%"></div>
-          </div>
+          <div class="skill-name">Java</div>
         </div>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>Python</span>
-            <span>85%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 85%"></div>
-          </div>
+          <div class="skill-name">Python</div>
         </div>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>C/C++</span>
-            <span>80%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 80%"></div>
-          </div>
+          <div class="skill-name">C/C++</div>
         </div>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>JavaScript</span>
-            <span>75%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 75%"></div>
-          </div>
+          <div class="skill-name">JavaScript</div>
         </div>
       </div>
 
       <div class="skill-category">
         <h3>Development Tools</h3>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>Git/GitHub</span>
-            <span>90%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 90%"></div>
-          </div>
+          <div class="skill-name">VSCode</div>
         </div>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>IntelliJ IDEA</span>
-            <span>90%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 90%"></div>
-          </div>
+          <div class="skill-name">Git/GitHub</div>
         </div>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>VSCode</span>
-            <span>95%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 95%"></div>
-          </div>
+          <div class="skill-name">IntelliJ IDEA</div>
         </div>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>Docker</span>
-            <span>70%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 70%"></div>
-          </div>
+          <div class="skill-name">Docker</div>
         </div>
       </div>
 
       <div class="skill-category">
         <h3>Key Competencies</h3>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>Problem Solving</span>
-            <span>90%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 90%"></div>
-          </div>
+          <div class="skill-name">OOP Principles</div>
         </div>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>Algorithm Design</span>
-            <span>85%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 85%"></div>
-          </div>
+          <div class="skill-name">Problem Solving</div>
         </div>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>OOP Principles</span>
-            <span>95%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 95%"></div>
-          </div>
+          <div class="skill-name">Algorithm Design</div>
         </div>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>Machine Learning</span>
-            <span>80%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 80%"></div>
-          </div>
+          <div class="skill-name">Machine Learning</div>
         </div>
       </div>
       
       <div class="skill-category">
         <h3>Professional Skills</h3>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>Team Collaboration</span>
-            <span>95%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 95%"></div>
-          </div>
+          <div class="skill-name">Team Collaboration</div>
         </div>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>Communication</span>
-            <span>90%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 90%"></div>
-          </div>
+          <div class="skill-name">Adaptability</div>
         </div>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>Project Management</span>
-            <span>85%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 85%"></div>
-          </div>
+          <div class="skill-name">Communication</div>
         </div>
         <div class="skill-item">
-          <div class="skill-name">
-            <span>Adaptability</span>
-            <span>95%</span>
-          </div>
-          <div class="skill-level">
-            <div class="skill-progress" style="width: 95%"></div>
-          </div>
+          <div class="skill-name">Project Management</div>
         </div>
       </div>
     </div>
