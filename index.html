@@ -4,11 +4,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ümmügülsün Türkmen - Computer Engineering Student and Creative Developer specializing in web development, image processing, and software engineering." />
+  <meta name="keywords" content="Ümmügülsün Türkmen, Computer Engineering, Software Development, Web Development, Image Processing, Istanbul" />
+  <meta name="author" content="Ümmügülsün Türkmen" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Ümmügülsün Türkmen | Portfolio" />
+  <meta property="og:description" content="Computer Engineering Student and Creative Developer specializing in web development and image processing." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ummugulsun.me" />
+  <meta property="og:image" content="https://ummugulsun.me/profile-image.jpg" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ümmügülsün Türkmen | Portfolio" />
+  <meta name="twitter:description" content="Computer Engineering Student and Creative Developer" />
+  <meta name="twitter:image" content="https://ummugulsun.me/profile-image.jpg" />
+  
   <title>Ümmügülsün Türkmen | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Preload Critical Resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  
+  <!-- Fallback for font loading -->
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+  </noscript>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
   <style>
+    /* Critical CSS */
     :root {
       --primary: #7E67FF;
       --secondary: #0099FF;
@@ -25,7 +55,7 @@
 
     body {
       margin: 0;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--dark);
       color: var(--light);
       line-height: 1.6;
@@ -104,7 +134,7 @@
     }
 
     h1 {
-      font-size: 5rem;
+      font-size: clamp(2.5rem, 5vw, 5rem);
       font-weight: 800;
       letter-spacing: -2px;
       margin-bottom: 1rem;
@@ -145,6 +175,7 @@
       align-items: center;
       z-index: 100;
       transition: background-color 0.3s ease;
+      backdrop-filter: blur(10px);
     }
 
     .nav.scrolled {
@@ -478,9 +509,14 @@
       transform: translateY(-5px);
     }
 
+    /* Mobile optimization */
     @media (max-width: 768px) {
+      .nav {
+        padding: 1rem;
+      }
+      
       h1 {
-        font-size: 3rem;
+        font-size: clamp(2rem, 4vw, 3rem);
       }
       
       .about-grid, .contact-grid {
@@ -520,422 +556,421 @@
     ::-webkit-scrollbar-thumb:hover {
       background: var(--secondary);
     }
+
+    /* Loading optimization */
+    .no-js img.lazyload {
+      display: none;
+    }
+
+    .about-image {
+      position: relative;
+      background: linear-gradient(45deg, var(--dark), #121212);
+      overflow: hidden;
+    }
+
+    .about-image img {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .about-image img.loaded {
+      opacity: 1;
+    }
+
+    .about-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, var(--dark), #121212);
+      filter: blur(20px);
+      transform: scale(1.1);
+      transition: opacity 0.3s ease;
+    }
+
+    .about-image img.loaded + .about-image::before {
+      opacity: 0;
+    }
   </style>
-</head>
 
-<body>
-  <div class="cursor"></div>
-  <div class="noise"></div>
+  <!-- Defer non-critical CSS -->
+  <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
 
-  <nav class="nav">
-    <a href="#" class="nav-logo">ÜT</a>
-  <div class="nav-links">
-  <a href="#about" class="nav-link">About</a>
-  <a href="#education" class="nav-link">Education</a>
-  <a href="#experience" class="nav-link">Experience</a>
-  <a href="#certifications" class="nav-link">Certifications</a>
-  <a href="#projects" class="nav-link">Projects</a>
-  <a href="#skills" class="nav-link">Skills</a>
-  <a href="#contact" class="nav-link">Contact</a>
-</div>
-  </nav>
+  <!-- Preload critical images -->
+  <link 
+    rel="preload" 
+    as="image" 
+    href="https://i.imgur.com/LhriYhI.webp" 
+    type="image/webp"
+    fetchpriority="high"
+  >
 
-  <header>
-    <div class="header-background"></div>
-    <div class="gradient-circle circle1"></div>
-    <div class="gradient-circle circle2"></div>
-    
-    <div class="header-content">
-      <div class="header-title">
-        <h1>Ümmügülsün Türkmen</h1>
-        <div class="title-mask"></div>
-      </div>
-      <p class="header-subtitle">Computer Engineering Student | Creative Developer</p>
-    </div>
-  </header>
-
-  <section id="about" class="section">
-    <h2 class="section-title">About Me</h2>
-    <div class="about-grid">
-      <div class="about-image">
-         <img src="https://i.imgur.com/LhriYhI.png" alt="Ümmügülsün Türkmen">
-      </div>
-      <div class="about-content">
-        <p>I'm a curious and passionate Computer Engineering student with hands-on experience in object-oriented programming, image processing, and collaborative development projects.</p>
-        <p>Focused on building strong foundations in software while enhancing both technical and soft skills, I love exploring new technologies and solving complex problems.</p>
-        <p>Currently pursuing my degree in Istanbul, I'm constantly looking for opportunities to grow and collaborate on innovative projects.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="education" class="section">
-    <h2 class="section-title">Education</h2>
-    
-    <div class="education-item">
-      <div class="education-date">2023 – 2027</div>
-      <h3 class="education-title">BSc in Computer Engineering</h3>
-      <p>Istanbul Health and Technology University</p>
-    </div>
-    
-    <div class="education-item">
-      <div class="education-date">2024 – 2026</div>
-      <h3 class="education-title">Associate Degree in Computer Programming</h3>
-      <p>Dokuz Eylul University</p>
-    </div>
-  </section>
-
-  <section id="experience" class="section">
-    <h2 class="section-title">Experience</h2>
-    
-    <div class="experience-item">
-      <div class="experience-date">July 2024 – October 2024</div>
-      <h3 class="experience-title">Merchandiser — Türkmenler Socks</h3>
-      <p>Istanbul</p>
-      <ul>
-        <li>Managed product inventory and merchandising at a family-run business</li>
-        <li>Improved customer-facing display performance</li>
-        <li>Gained experience in multitasking, teamwork, and logistics</li>
-      </ul>
-    </div>
-  </section>
-<section id="certifications" class="section">
-  <h2 class="section-title">Certifications</h2>
+  <!-- Add resource hints -->
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   
-  <div class="experience-item">
-    <div class="education-date">August 2024</div>
-    <h3 class="education-title">Supervised Machine Learning: Regression and Classification</h3>
-    <p>DeepLearning.AI, Stanford University</p>
-    <p>Credential ID: F3FQTTDO8ZH7</p>
-  </div>
-  
-  <div class="experience-item">
-    <div class="education-date">February 2025</div>
-    <h3 class="education-title">Project Planning: Putting It All Together</h3>
-    <p>Google</p>
-    <p>Credential ID: L4NYXTDWTXL0</p>
-  </div>
-  
-  <div class="experience-item">
-    <div class="education-date">February 2025</div>
-    <h3 class="education-title">Project Initiation: Starting a Successful Project</h3>
-    <p>Google</p>
-    <p>Credential ID: 8GX2AJ69Z9D6</p>
-  </div>
-  
-  <div class="experience-item">
-    <div class="education-date">February 2025</div>
-    <h3 class="education-title">Project Execution: Running the Project</h3>
-    <p>Google</p>
-    <p>Credential ID: 3E57P9BZ1NEA</p>
-  </div>
-</section>
-  <section id="projects" class="section">
-    <h2 class="section-title">Projects</h2>
+  <!-- Add module/nomodule pattern for better browser support -->
+  <script type="module">
+    // Modern browsers
+    import { initAnimations } from './js/animations.js';
+    import { initForm } from './js/form.js';
+    import { initNavigation } from './js/navigation.js';
     
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3 class="project-title">Adventure Game</h3>
-        <p>Text-based OOP project with modular architecture, inheritance, and polymorphism implemented in Java.</p>
-        <div class="skills-container">
-          <span class="skill-tag">Java</span>
-          <span class="skill-tag">OOP</span>
-          <span class="skill-tag">Game Design</span>
-        </div>
-      </div>
-      
-      <div class="project-card">
-        <h3 class="project-title">Image Processing App</h3>
-        <p>Collaborative tool with filters, transforms, and basic computer vision features. (Ongoing)</p>
-        <div class="skills-container">
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">OpenCV</span>
-          <span class="skill-tag">Image Processing</span>
-        </div>
-      </div>
-      
-      <div class="project-card">
-        <h3 class="project-title">Coursework Repository</h3>
-        <p>Structured GitHub repo with OOP and image processing assignments</p>
-        <div class="skills-container">
-          <span class="skill-tag">Git</span>
-          <span class="skill-tag">Documentation</span>
-          <span class="skill-tag">Multiple Languages</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="section">
-    <h2 class="section-title">Skills</h2>
-    
-    <div class="skills-container fade-up">
-      <span class="skill-tag">Java</span>
-      <span class="skill-tag">Python</span>
-      <span class="skill-tag">C</span>
-      <span class="skill-tag">C++</span>
-      <span class="skill-tag">Git</span>
-      <span class="skill-tag">GitHub</span>
-      <span class="skill-tag">IntelliJ IDEA</span>
-      <span class="skill-tag">VSCode</span>
-      <span class="skill-tag">OOP</span>
-      <span class="skill-tag">Data Structures</span>
-      <span class="skill-tag">Image Processing</span>
-      <span class="skill-tag">Collaboration</span>
-      <span class="skill-tag">Time Management</span>
-      <span class="skill-tag">Communication</span>
-    </div>
-  </section>
-
-  <section id="contact" class="section">
-    <h2 class="section-title">Get in Touch</h2>
-    
-    <div class="contact-grid">
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="contact-icon">📧</div>
-          <div>
-            <h3>Email</h3>
-            <p><a href="mailto:ummugulsum1881@gmail.com">ummugulsum1881@gmail.com</a></p>
-          </div>
-        </div>
-        
-     
-        
-        <div class="contact-item">
-          <div class="contact-icon">🔗</div>
-          <div>
-            <h3>GitHub</h3>
-            <p><a href="https://github.com/ummugulsunn" target="_blank">ummugulsunn</a></p>
-          </div>
-        </div>
-        
-        <div class="contact-item">
-          <div class="contact-icon">💼</div>
-          <div>
-            <h3>LinkedIn</h3>
-            <p><a href="https://www.linkedin.com/in/ümmügülsün-t-306904257/" target="_blank">Ümmügülsün T.</a></p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="contact-form">
-
-  <form action="https://formspree.io/f/mzzendlp" method="POST">
-    <div class="form-group">
-      <input type="text" class="form-control" name="name" placeholder="Your Name" required>
-    </div>
-    <div class="form-group">
-      <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-    </div>
-    <div class="form-group">
-      <textarea class="form-control" name="message" placeholder="Your Message" required></textarea>
-    </div>
-    <button type="submit" class="btn">Send Message</button>
-  </form>
-</div>
-  </section>
-
-  <footer>
-    <div class="footer-content">
-      <div class="social-links">
-        <a href="#" class="social-link">📧</a>
-        <a href="#" class="social-link">🔗</a>
-        <a href="#" class="social-link">💼</a>
-      </div>
-      <p>© 2025 Ümmügülsün Türkmen. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <div class="back-to-top">↑</div>
-
-  <script>
-    // Custom cursor
-    const cursor = document.querySelector('.cursor');
-    
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+    document.addEventListener('DOMContentLoaded', () => {
+      initAnimations();
+      initForm();
+      initNavigation();
     });
-    
-    document.addEventListener('mousedown', () => {
-      cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
-    });
-    
-    document.addEventListener('mouseup', () => {
-      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-    });
-
-    // Initialize GSAP animations
-    document.addEventListener("DOMContentLoaded", function() {
-      // Header animations
-      gsap.to(".title-mask", {
-        scaleX: 0,
-        duration: 1.5,
-        ease: "power4.inOut"
-      });
+  </script>
+  
+  <script nomodule>
+    // Legacy browsers
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load legacy scripts
+      const scripts = [
+        'js/animations.legacy.js',
+        'js/form.legacy.js',
+        'js/navigation.legacy.js'
+      ];
       
-      gsap.to(".header-subtitle", {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 1,
-        ease: "power3.out"
-      });
-      
-      // Navigation scroll effect
-      window.addEventListener('scroll', () => {
-        const nav = document.querySelector('.nav');
-        const backToTop = document.querySelector('.back-to-top');
-        
-        if (window.scrollY > 100) {
-          nav.classList.add('scrolled');
-          backToTop.classList.add('visible');
-        } else {
-          nav.classList.remove('scrolled');
-          backToTop.classList.remove('visible');
-        }
-      });
-      
-      // Smooth scrolling
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          
-          const targetElement = document.querySelector(targetId);
-          
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        });
-      });
-      
-      // Back to top button
-      document.querySelector('.back-to-top').addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-      
-      // Register ScrollTrigger
-      gsap.registerPlugin(ScrollTrigger);
-      
-      // About section animations
-      gsap.to(".about-content", {
-        scrollTrigger: {
-          trigger: ".about-content",
-          start: "top 80%",
-          toggleActions: "play none none none"
-        },
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        ease: "power3.out"
-      });
-      
-      // Education and Experience items animations
-      gsap.utils.toArray(".education-item, .experience-item").forEach(item => {
-        gsap.to(item, {
-          scrollTrigger: {
-            trigger: item,
-            start: "top 80%",
-            toggleActions: "play none none none"
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out"
-        });
-      });
-      // Certifications items animations
-gsap.utils.toArray("#certifications .experience-item").forEach(item => {
-  gsap.to(item, {
-    scrollTrigger: {
-      trigger: item,
-      start: "top 80%",
-      toggleActions: "play none none none"
-    },
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    ease: "power3.out"
-  });
-});
-      // Project cards animations
-      gsap.utils.toArray(".project-card").forEach((card, i) => {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            toggleActions: "play none none none"
-          },
-          y: 50,
-          opacity: 0,
-          duration: 0.6,
-          delay: i * 0.1,
-          ease: "power3.out"
-        });
-      });
-      
-      // Skills tags animations
-      gsap.from(".skill-tag", {
-        scrollTrigger: {
-          trigger: ".skills-container",
-          start: "top 80%",
-          toggleActions: "play none none none"
-        },
-        scale: 0.8,
-        opacity: 0,
-        duration: 0.5,
-        stagger: 0.05,
-        ease: "back.out(1.7)"
-      });
-      
-      // Contact section animations
-      gsap.to(".contact-info", {
-        scrollTrigger: {
-          trigger: ".contact-info",
-          start: "top 80%",
-          toggleActions: "play none none none"
-        },
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        ease: "power3.out"
-      });
-      
-      gsap.to(".contact-form", {
-        scrollTrigger: {
-          trigger: ".contact-form",
-          start: "top 80%",
-          toggleActions: "play none none none"
-        },
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        ease: "power3.out"
-      });
-      
-      // Fade up elements
-      gsap.utils.toArray(".fade-up").forEach(element => {
-        gsap.to(element, {
-          scrollTrigger: {
-            trigger: element,
-            start: "top 85%",
-            toggleActions: "play none none none"
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out"
-        });
+      scripts.forEach(src => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.defer = true;
+        document.body.appendChild(script);
       });
     });
   </script>
+  
+  <!-- Add performance monitoring -->
+  <script>
+    // Performance monitoring
+    if ('performance' in window) {
+      window.addEventListener('load', () => {
+        const timing = performance.getEntriesByType('navigation')[0];
+        const metrics = {
+          'First Contentful Paint': performance.getEntriesByName('first-contentful-paint')[0]?.startTime,
+          'DOM Content Loaded': timing.domContentLoadedEventEnd - timing.navigationStart,
+          'Window Load': timing.loadEventEnd - timing.navigationStart
+        };
+        
+        console.log('Performance Metrics:', metrics);
+        
+        // Send metrics to analytics if needed
+        if (metrics['First Contentful Paint'] > 2000) {
+          console.warn('Slow First Contentful Paint detected');
+        }
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <a href="#main" class="skip-to-main">Skip to main content</a>
+  <div class="cursor"></div>
+  <div class="noise"></div>
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-logo" aria-label="ÜT Logo">ÜT</a>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+      <span class="hamburger" aria-hidden="true"></span>
+    </button>
+    <div id="nav-links" class="nav-links" role="menu">
+      <a href="#about" class="nav-link" role="menuitem">About</a>
+      <a href="#education" class="nav-link" role="menuitem">Education</a>
+      <a href="#experience" class="nav-link" role="menuitem">Experience</a>
+      <a href="#certifications" class="nav-link" role="menuitem">Certifications</a>
+      <a href="#projects" class="nav-link" role="menuitem">Projects</a>
+      <a href="#skills" class="nav-link" role="menuitem">Skills</a>
+      <a href="#contact" class="nav-link" role="menuitem">Contact</a>
+    </div>
+    <div class="nav-overlay" aria-hidden="true"></div>
+  </nav>
+
+  <header role="banner">
+    <div class="header-background" aria-hidden="true"></div>
+    <div class="gradient-circle circle1" aria-hidden="true"></div>
+    <div class="gradient-circle circle2" aria-hidden="true"></div>
+    
+    <div class="header-content">
+      <div class="header-title">
+        <h1 tabindex="0">Ümmügülsün Türkmen</h1>
+        <div class="title-mask" aria-hidden="true"></div>
+      </div>
+      <p class="header-subtitle" tabindex="0">Computer Engineering Student | Creative Developer</p>
+    </div>
+  </header>
+
+  <main role="main">
+    <section id="about" class="section" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title" tabindex="0">About Me</h2>
+      <div class="about-grid">
+        <div class="about-image">
+          <picture>
+            <source 
+              srcset="https://i.imgur.com/LhriYhI.webp 1x, https://i.imgur.com/LhriYhI.webp 2x" 
+              type="image/webp"
+            >
+            <source 
+              srcset="https://i.imgur.com/LhriYhI.png 1x, https://i.imgur.com/LhriYhI.png 2x" 
+              type="image/png"
+            >
+            <img 
+              src="https://i.imgur.com/LhriYhI.png" 
+              alt="Ümmügülsün Türkmen" 
+              loading="lazy"
+              width="400"
+              height="400"
+              decoding="async"
+              fetchpriority="high"
+            >
+          </picture>
+        </div>
+        <div class="about-content">
+          <p tabindex="0">I'm a curious and passionate Computer Engineering student with hands-on experience in object-oriented programming, image processing, and collaborative development projects.</p>
+          <p tabindex="0">Focused on building strong foundations in software while enhancing both technical and soft skills, I love exploring new technologies and solving complex problems.</p>
+          <p tabindex="0">Currently pursuing my degree in Istanbul, I'm constantly looking for opportunities to grow and collaborate on innovative projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section">
+      <h2 class="section-title">Education</h2>
+      
+      <div class="education-item">
+        <div class="education-date">2023 – 2027</div>
+        <h3 class="education-title">BSc in Computer Engineering</h3>
+        <p>Istanbul Health and Technology University</p>
+      </div>
+      
+      <div class="education-item">
+        <div class="education-date">2024 – 2026</div>
+        <h3 class="education-title">Associate Degree in Computer Programming</h3>
+        <p>Dokuz Eylul University</p>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <h2 class="section-title">Experience</h2>
+      
+      <div class="experience-item">
+        <div class="experience-date">July 2024 – October 2024</div>
+        <h3 class="experience-title">Merchandiser — Türkmenler Socks</h3>
+        <p>Istanbul</p>
+        <ul>
+          <li>Managed product inventory and merchandising at a family-run business</li>
+          <li>Improved customer-facing display performance</li>
+          <li>Gained experience in multitasking, teamwork, and logistics</li>
+        </ul>
+      </div>
+    </section>
+  <section id="certifications" class="section">
+    <h2 class="section-title">Certifications</h2>
+    
+    <div class="experience-item">
+      <div class="education-date">August 2024</div>
+      <h3 class="education-title">Supervised Machine Learning: Regression and Classification</h3>
+      <p>DeepLearning.AI, Stanford University</p>
+      <p>Credential ID: F3FQTTDO8ZH7</p>
+    </div>
+    
+    <div class="experience-item">
+      <div class="education-date">February 2025</div>
+      <h3 class="education-title">Project Planning: Putting It All Together</h3>
+      <p>Google</p>
+      <p>Credential ID: L4NYXTDWTXL0</p>
+    </div>
+    
+    <div class="experience-item">
+      <div class="education-date">February 2025</div>
+      <h3 class="education-title">Project Initiation: Starting a Successful Project</h3>
+      <p>Google</p>
+      <p>Credential ID: 8GX2AJ69Z9D6</p>
+    </div>
+    
+    <div class="experience-item">
+      <div class="education-date">February 2025</div>
+      <h3 class="education-title">Project Execution: Running the Project</h3>
+      <p>Google</p>
+      <p>Credential ID: 3E57P9BZ1NEA</p>
+    </div>
+  </section>
+    <section id="projects" class="section">
+      <h2 class="section-title">Projects</h2>
+      
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3 class="project-title">Adventure Game</h3>
+          <p>Text-based OOP project with modular architecture, inheritance, and polymorphism implemented in Java.</p>
+          <div class="skills-container">
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">OOP</span>
+            <span class="skill-tag">Game Design</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3 class="project-title">Image Processing App</h3>
+          <p>Collaborative tool with filters, transforms, and basic computer vision features. (Ongoing)</p>
+          <div class="skills-container">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">OpenCV</span>
+            <span class="skill-tag">Image Processing</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3 class="project-title">Coursework Repository</h3>
+          <p>Structured GitHub repo with OOP and image processing assignments</p>
+          <div class="skills-container">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Documentation</span>
+            <span class="skill-tag">Multiple Languages</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2 class="section-title">Skills</h2>
+      
+      <div class="skills-container fade-up">
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">C</span>
+        <span class="skill-tag">C++</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">IntelliJ IDEA</span>
+        <span class="skill-tag">VSCode</span>
+        <span class="skill-tag">OOP</span>
+        <span class="skill-tag">Data Structures</span>
+        <span class="skill-tag">Image Processing</span>
+        <span class="skill-tag">Collaboration</span>
+        <span class="skill-tag">Time Management</span>
+        <span class="skill-tag">Communication</span>
+      </div>
+    </section>
+
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="section-title">Get in Touch</h2>
+      
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">📧</div>
+            <div>
+              <h3 id="email-label">Email</h3>
+              <p><a href="mailto:ummugulsum1881@gmail.com" aria-labelledby="email-label">ummugulsum1881@gmail.com</a></p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">🔗</div>
+            <div>
+              <h3 id="github-label">GitHub</h3>
+              <p><a href="https://github.com/ummugulsunn" target="_blank" rel="noopener noreferrer" aria-labelledby="github-label">ummugulsunn</a></p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">💼</div>
+            <div>
+              <h3 id="linkedin-label">LinkedIn</h3>
+              <p><a href="https://www.linkedin.com/in/ümmügülsün-t-306904257/" target="_blank" rel="noopener noreferrer" aria-labelledby="linkedin-label">Ümmügülsün T.</a></p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <form action="https://formspree.io/f/mzzendlp" method="POST" aria-label="Contact form" id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="name" class="visually-hidden">Your Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                class="form-control" 
+                name="name" 
+                placeholder="Your Name" 
+                required 
+                aria-required="true"
+                minlength="2"
+                maxlength="50"
+                pattern="[A-Za-z\s]+"
+                aria-describedby="name-error"
+              >
+              <div id="name-error" class="error-message" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="visually-hidden">Your Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                class="form-control" 
+                name="email" 
+                placeholder="Your Email" 
+                required 
+                aria-required="true"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                aria-describedby="email-error"
+              >
+              <div id="email-error" class="error-message" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="visually-hidden">Your Message</label>
+              <textarea 
+                id="message" 
+                class="form-control" 
+                name="message" 
+                placeholder="Your Message" 
+                required 
+                aria-required="true"
+                minlength="10"
+                maxlength="1000"
+                aria-describedby="message-error"
+              ></textarea>
+              <div id="message-error" class="error-message" aria-live="polite"></div>
+            </div>
+
+            <div class="form-status" aria-live="polite"></div>
+            
+            <button type="submit" class="btn" aria-label="Send message">
+              <span class="btn-text">Send Message</span>
+              <div class="btn-loader" aria-hidden="true">
+                <svg class="spinner" viewBox="0 0 50 50">
+                  <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                </svg>
+              </div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <div class="social-links" aria-label="Social media links">
+        <a href="mailto:ummugulsum1881@gmail.com" class="social-link" aria-label="Email">📧</a>
+        <a href="https://github.com/ummugulsunn" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">🔗</a>
+        <a href="https://www.linkedin.com/in/ümmügülsün-t-306904257/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">💼</a>
+      </div>
+      <p>&copy; 2025 Ümmügülsün Türkmen. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Scroll back to top">↑</button>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-content"></div>
+    <button class="toast-close" aria-label="Close notification">×</button>
+  </div>
 </body>
 
 </html>
