@@ -797,33 +797,65 @@
     /* Updated Skill Section */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 2.5rem;
     }
 
     .skill-category {
       background: var(--card-bg);
       border-radius: 12px;
-      padding: 1.8rem;
+      padding: 2rem;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-left: 3px solid var(--primary);
+      border-left: 4px solid var(--primary);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    
+    .skill-category::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right bottom, var(--primary), transparent);
+      opacity: 0.05;
+      z-index: -1;
+      transition: opacity 0.3s ease;
     }
 
     .skill-category:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .skill-category:hover::before {
+      opacity: 0.1;
     }
 
     .skill-category h3 {
       color: var(--primary);
-      margin-bottom: 1.5rem;
-      font-size: 1.2rem;
+      margin-bottom: 1.8rem;
+      font-size: 1.3rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 600;
+      letter-spacing: 1.5px;
+      font-weight: 700;
       position: relative;
-      padding-left: 24px;
+      padding-left: 28px;
+      display: inline-block;
+    }
+    
+    .skill-category h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 28px;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
     }
     
     .skill-category h3:before {
@@ -831,13 +863,20 @@
       position: absolute;
       left: 0;
       font-weight: bold;
+      font-size: 1.2rem;
     }
 
     .skill-item {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
       opacity: 0;
       transform: translateY(20px);
-      padding-left: 24px;
+      padding-left: 10px;
+      position: relative;
+      transition: all 0.5s ease;
+    }
+    
+    .skill-item:last-child {
+      margin-bottom: 0;
     }
 
     .skill-name {
@@ -846,15 +885,39 @@
       margin-bottom: 0.7rem;
       color: var(--text-primary);
       font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    
+    .skill-name span:first-child {
+      position: relative;
+      padding-left: 18px;
+    }
+    
+    .skill-name span:first-child::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--secondary);
+    }
+    
+    .skill-name span:last-child {
+      font-weight: 600;
+      color: var(--primary);
     }
 
     .skill-level {
       width: 100%;
-      height: 6px;
-      background: var(--card-bg);
-      border-radius: 3px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
       overflow: hidden;
       position: relative;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
     }
 
     .skill-progress {
@@ -863,14 +926,20 @@
       left: 0;
       height: 100%;
       background: linear-gradient(90deg, var(--primary), var(--secondary));
-      border-radius: 3px;
+      border-radius: 4px;
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
-
+    
     .skill-progress.animate {
       transform: scaleX(1);
+    }
+    
+    .skill-item.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .blog-section {
@@ -1172,17 +1241,26 @@
             <div class="skill-progress" style="width: 80%"></div>
           </div>
         </div>
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>JavaScript</span>
+            <span>75%</span>
+          </div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 75%"></div>
+          </div>
+        </div>
       </div>
 
       <div class="skill-category">
-        <h3>Tools & Technologies</h3>
+        <h3>Development Tools</h3>
         <div class="skill-item">
           <div class="skill-name">
             <span>Git/GitHub</span>
-            <span>85%</span>
+            <span>90%</span>
           </div>
           <div class="skill-level">
-            <div class="skill-progress" style="width: 85%"></div>
+            <div class="skill-progress" style="width: 90%"></div>
           </div>
         </div>
         <div class="skill-item">
@@ -1203,10 +1281,19 @@
             <div class="skill-progress" style="width: 95%"></div>
           </div>
         </div>
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Docker</span>
+            <span>70%</span>
+          </div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 70%"></div>
+          </div>
+        </div>
       </div>
 
       <div class="skill-category">
-        <h3>Soft Skills</h3>
+        <h3>Key Competencies</h3>
         <div class="skill-item">
           <div class="skill-name">
             <span>Problem Solving</span>
@@ -1218,7 +1305,7 @@
         </div>
         <div class="skill-item">
           <div class="skill-name">
-            <span>Team Collaboration</span>
+            <span>Algorithm Design</span>
             <span>85%</span>
           </div>
           <div class="skill-level">
@@ -1227,7 +1314,56 @@
         </div>
         <div class="skill-item">
           <div class="skill-name">
+            <span>OOP Principles</span>
+            <span>95%</span>
+          </div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 95%"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Machine Learning</span>
+            <span>80%</span>
+          </div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 80%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3>Professional Skills</h3>
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Team Collaboration</span>
+            <span>95%</span>
+          </div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 95%"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">
             <span>Communication</span>
+            <span>90%</span>
+          </div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 90%"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Project Management</span>
+            <span>85%</span>
+          </div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 85%"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Adaptability</span>
             <span>95%</span>
           </div>
           <div class="skill-level">
@@ -1587,25 +1723,43 @@ gsap.utils.toArray("#certifications .experience-item").forEach(item => {
 
     // Updated Skills Animation
     const skillObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          const progressBar = entry.target.querySelector('.skill-progress');
-          if (progressBar) {
-            setTimeout(() => {
+          // Delay each skill item animation for a staggered effect
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+            const progressBar = entry.target.querySelector('.skill-progress');
+            if (progressBar) {
               progressBar.classList.add('animate');
-            }, 200);
-          }
+            }
+          }, index * 100); // 100ms stagger
         }
       });
     }, {
-      threshold: 0.2,
-      rootMargin: '0px'
+      threshold: 0.15,
+      rootMargin: '-50px'
     });
 
     // Observe both old and new skill items
     document.querySelectorAll('.skill-tag, .skill-item').forEach(skill => {
       skillObserver.observe(skill);
+    });
+    
+    // Add hover effects for skill categories
+    document.querySelectorAll('.skill-category').forEach(category => {
+      category.addEventListener('mouseenter', () => {
+        const progressBars = category.querySelectorAll('.skill-progress');
+        progressBars.forEach(bar => {
+          bar.style.opacity = '0.9';
+        });
+      });
+      
+      category.addEventListener('mouseleave', () => {
+        const progressBars = category.querySelectorAll('.skill-progress');
+        progressBars.forEach(bar => {
+          bar.style.opacity = '1';
+        });
+      });
     });
 
     // Form validation
