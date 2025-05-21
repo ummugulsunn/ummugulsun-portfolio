@@ -29,8 +29,8 @@
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-  opacity: 0;
-  transform: translateY(30px);
+  /* opacity: 0; */
+  /* transform: translateY(30px); */
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
@@ -534,4 +534,10 @@
     bottom: 1rem;
     right: 1rem;
   }
+}
+
+/* Animasyon başlangıç değerlerini geçici olarak kaldırıyorum */
+.about-content, .education-item, .experience-item, .project-item, .contact-info, .contact-form, .fade-up {
+  /* opacity: 0; */
+  /* transform: translateY(30px); */
 } 
