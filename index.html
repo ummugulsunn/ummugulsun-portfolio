@@ -72,6 +72,12 @@
       transition-delay: 0 !important;
     }
 
+    /* Exclude gradients and animations from sudden transitions */
+    .theme-transition .gradient-circle,
+    .theme-transition .header-background {
+      transition: opacity 0.3s ease-in-out !important;
+    }
+
     .cursor {
       width: 20px;
       height: 20px;
@@ -104,6 +110,7 @@
       align-items: center;
       position: relative;
       overflow: hidden;
+      transition: background-color 0.3s ease;
     }
 
     .header-background {
@@ -112,8 +119,17 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(45deg, #090909, #121212);
+      background: linear-gradient(45deg, var(--bg-primary), var(--bg-secondary));
       z-index: -1;
+      transition: background 0.3s ease;
+    }
+
+    [data-theme="light"] .header-background {
+      background: linear-gradient(45deg, var(--bg-secondary), #f0f0f0);
+    }
+
+    [data-theme="dark"] .header-background {
+      background: linear-gradient(45deg, #090909, #121212);
     }
 
     .gradient-circle {
@@ -125,6 +141,11 @@
       opacity: 0.2;
       filter: blur(80px);
       animation: float 20s infinite ease-in-out;
+      transition: opacity 0.3s ease;
+    }
+
+    [data-theme="light"] .gradient-circle {
+      opacity: 0.15;
     }
 
     @keyframes float {
@@ -165,14 +186,17 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: var(--dark);
+      background-color: var(--bg-primary);
       transform-origin: left;
+      transition: background-color 0.3s ease;
     }
 
     .header-subtitle {
       font-size: 1.2rem;
       opacity: 0;
       transform: translateY(20px);
+      color: var(--text-secondary);
+      transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
     }
 
     .nav {
@@ -631,6 +655,23 @@
       .nav-links {
         display: none;
       }
+      
+      .theme-toggle {
+        bottom: 20px;
+        left: 20px;
+        width: 44px;
+        height: 44px;
+      }
+      
+      .action-buttons {
+        bottom: 20px;
+        right: 20px;
+      }
+      
+      .back-to-top {
+        width: 44px;
+        height: 44px;
+      }
     }
 
     /* Animations */
@@ -744,8 +785,8 @@
     /* Theme Toggle Button */
     .theme-toggle {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      bottom: 30px;
+      left: 30px;
       width: 48px;
       height: 48px;
       border-radius: 50%;
@@ -755,15 +796,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 1000;
+      z-index: 99;
       transition: all 0.3s ease;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
       overflow: hidden;
     }
 
     .theme-toggle:hover {
       transform: scale(1.1);
       border-color: var(--primary);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     }
 
     .theme-toggle svg {
@@ -1037,6 +1079,41 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Fixed Action Buttons */
+    .action-buttons {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      gap: 15px;
+      z-index: 99;
+    }
+
+    .back-to-top {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      font-size: 1.2rem;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
   </style>
 </head>
 
@@ -1047,6 +1124,19 @@
     <div class="loader-content"></div>
   </div>
   <div class="scroll-progress"></div>
+
+  <button class="theme-toggle" aria-label="Toggle theme">
+    <svg class="sun-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 6a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1zM21 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zM6 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1zM6.34 17.66a1 1 0 0 0-1.41 1.41l1.41 1.41a1 1 0 0 0 1.41-1.41zM6.34 6.34l-1.41 1.41a1 1 0 0 0 1.41 1.41l1.41-1.41a1 1 0 0 0-1.41-1.41zM17.66 6.34a1 1 0 0 0-1.41 0l-1.41 1.41a1 1 0 0 0 1.41 1.41l1.41-1.41a1 1 0 0 0 0-1.41zM17.66 19.07l1.41-1.41a1 1 0 0 0-1.41-1.41l-1.41 1.41a1 1 0 0 0 1.41 1.41zM12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"></path>
+    </svg>
+    <svg class="moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.1 22c-4.3 0-7.9-3.1-8.6-7.3-.8-4.9 2.3-9.5 7.1-10.6.5-.1 1 .2 1.1.6.1.5-.1.9-.5 1.1-2.6 1.5-3.7 4.9-2.5 7.7 1.2 2.8 4.4 4.1 7.3 3.2.5-.2 1 .1 1.2.5.1.5-.1 1-.5 1.2-1.5.6-3 .9-4.6.9-.3 0-.7 0-1 0z"></path>
+    </svg>
+  </button>
+  
+  <div class="action-buttons">
+    <div class="back-to-top">↑</div>
+  </div>
 
   <nav class="nav">
     <a href="#" class="nav-logo">ÜT</a>
@@ -1059,14 +1149,6 @@
       <a href="#skills" class="nav-link">Skills</a>
       <a href="#contact" class="nav-link">Contact</a>
     </div>
-    <button class="theme-toggle" aria-label="Toggle theme">
-      <svg class="sun-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 6a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1zM21 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2zM6 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1zM6.34 17.66a1 1 0 0 0-1.41 1.41l1.41 1.41a1 1 0 0 0 1.41-1.41zM6.34 6.34l-1.41 1.41a1 1 0 0 0 1.41 1.41l1.41-1.41a1 1 0 0 0-1.41-1.41zM17.66 6.34a1 1 0 0 0-1.41 0l-1.41 1.41a1 1 0 0 0 1.41 1.41l1.41-1.41a1 1 0 0 0 0-1.41zM17.66 19.07l1.41-1.41a1 1 0 0 0-1.41-1.41l-1.41 1.41a1 1 0 0 0 1.41 1.41zM12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"></path>
-      </svg>
-      <svg class="moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12.1 22c-4.3 0-7.9-3.1-8.6-7.3-.8-4.9 2.3-9.5 7.1-10.6.5-.1 1 .2 1.1.6.1.5-.1.9-.5 1.1-2.6 1.5-3.7 4.9-2.5 7.7 1.2 2.8 4.4 4.1 7.3 3.2.5-.2 1 .1 1.2.5.1.5-.1 1-.5 1.2-1.5.6-3 .9-4.6.9-.3 0-.7 0-1 0z"></path>
-      </svg>
-    </button>
   </nav>
 
   <header>
@@ -1458,8 +1540,6 @@
       <p>© 2025 Ümmügülsün Türkmen. All rights reserved.</p>
     </div>
   </footer>
-
-  <div class="back-to-top">↑</div>
 
   <section id="blog" class="section">
     <h2 class="section-title">Blog</h2>
