@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://ummugulsun.me/sitemap.xml 

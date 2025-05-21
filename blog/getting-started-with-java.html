@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started with Java - Ümmügülsün Türkmen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #7E67FF;
+      --secondary: #0099FF;
+      --dark: #080808;
+      --light: #ffffff;
+      --accent: #FF3366;
+      --bg-primary: var(--dark);
+      --bg-secondary: #121212;
+      --text-primary: var(--light);
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --card-bg: rgba(255, 255, 255, 0.05);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f5f5;
+      --text-primary: #080808;
+      --text-secondary: rgba(0, 0, 0, 0.7);
+      --card-bg: rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-5px);
+    }
+
+    .blog-header {
+      margin-bottom: 4rem;
+    }
+
+    .blog-title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .blog-meta {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      color: var(--text-secondary);
+    }
+
+    .blog-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .blog-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .blog-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-content h2 {
+      font-size: 2rem;
+      margin: 3rem 0 1.5rem;
+      color: var(--primary);
+    }
+
+    .blog-content h3 {
+      font-size: 1.5rem;
+      margin: 2rem 0 1rem;
+      color: var(--secondary);
+    }
+
+    .blog-content ul, .blog-content ol {
+      margin: 1rem 0 1.5rem 2rem;
+    }
+
+    .blog-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-content code {
+      background: var(--card-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: 'Inter', monospace;
+    }
+
+    .blog-content pre {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    .blog-content pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .blog-content blockquote {
+      border-left: 4px solid var(--primary);
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      color: var(--text-secondary);
+    }
+
+    .blog-content img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .blog-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 3rem;
+    }
+
+    .blog-tag {
+      background: var(--card-bg);
+      color: var(--text-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .blog-tag:hover {
+      background: var(--primary);
+      color: var(--light);
+    }
+
+    .blog-navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--card-bg);
+    }
+
+    .blog-nav-link {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .blog-nav-link:hover {
+      transform: translateX(5px);
+    }
+
+    .blog-nav-link.prev:hover {
+      transform: translateX(-5px);
+    }
+
+    @media (max-width: 768px) {
+      .blog-title {
+        font-size: 2rem;
+      }
+
+      .blog-meta {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .blog-navigation {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html#blog" class="back-link">← Back to Blog</a>
+
+    <article class="blog-header">
+      <h1 class="blog-title">Getting Started with Java: A Beginner's Guide</h1>
+      <div class="blog-meta">
+        <div class="blog-meta-item">
+          <span>📅</span>
+          <span>Published: February 15, 2024</span>
+        </div>
+        <div class="blog-meta-item">
+          <span>⏱️</span>
+          <span>10 min read</span>
+        </div>
+        <div class="blog-meta-item">
+          <span>🏷️</span>
+          <span>Programming, Java</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="blog-content">
+      <p>
+        Java is one of the most popular programming languages in the world, known for its
+        "write once, run anywhere" philosophy and robust ecosystem. In this guide, we'll
+        explore the fundamentals of Java programming and help you get started on your
+        journey to becoming a Java developer.
+      </p>
+
+      <h2>Why Learn Java?</h2>
+      <p>
+        Java has maintained its popularity for decades due to several key advantages:
+      </p>
+      <ul>
+        <li>Platform independence through the Java Virtual Machine (JVM)</li>
+        <li>Strong object-oriented programming features</li>
+        <li>Extensive standard library and third-party ecosystem</li>
+        <li>High demand in enterprise software development</li>
+        <li>Excellent community support and documentation</li>
+      </ul>
+
+      <h2>Setting Up Your Development Environment</h2>
+      <p>
+        Before you start coding, you'll need to set up your development environment:
+      </p>
+      <ol>
+        <li>Install the Java Development Kit (JDK)</li>
+        <li>Choose an Integrated Development Environment (IDE)</li>
+        <li>Configure your environment variables</li>
+      </ol>
+
+      <h3>Installing the JDK</h3>
+      <p>
+        Download and install the latest version of the JDK from Oracle's website or use
+        OpenJDK. After installation, verify it by running:
+      </p>
+      <pre><code>java --version
+javac --version</code></pre>
+
+      <h2>Your First Java Program</h2>
+      <p>
+        Let's create a simple "Hello, World!" program to get started:
+      </p>
+      <pre><code>public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}</code></pre>
+
+      <h2>Understanding Java Basics</h2>
+      <p>
+        Java is an object-oriented language, which means everything in Java is an object.
+        Here are some fundamental concepts you'll need to understand:
+      </p>
+
+      <h3>Variables and Data Types</h3>
+      <p>
+        Java is a statically-typed language, meaning you must declare the type of
+        variables before using them. Here are the basic data types:
+      </p>
+      <ul>
+        <li>Primitive types (int, double, boolean, char)</li>
+        <li>Reference types (String, arrays, objects)</li>
+      </ul>
+
+      <blockquote>
+        Remember: Java is case-sensitive, so "myVariable" and "myvariable" are
+        different identifiers.
+      </blockquote>
+
+      <h2>Next Steps</h2>
+      <p>
+        Now that you have a basic understanding of Java, here are some recommended
+        next steps:
+      </p>
+      <ol>
+        <li>Learn about object-oriented programming concepts</li>
+        <li>Practice with simple programming exercises</li>
+        <li>Explore the Java standard library</li>
+        <li>Join Java developer communities</li>
+      </ol>
+
+      <div class="blog-tags">
+        <a href="#" class="blog-tag">#Java</a>
+        <a href="#" class="blog-tag">#Programming</a>
+        <a href="#" class="blog-tag">#Beginners</a>
+        <a href="#" class="blog-tag">#Tutorial</a>
+      </div>
+    </article>
+
+    <nav class="blog-navigation">
+      <a href="#" class="blog-nav-link prev">
+        <span>←</span>
+        <span>Previous: Understanding Object-Oriented Programming</span>
+      </a>
+      <a href="#" class="blog-nav-link">
+        <span>Next: Java Collections Framework</span>
+        <span>→</span>
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    // Theme support
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+  </script>
+</body>
+</html> 
