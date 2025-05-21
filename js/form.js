@@ -1,5 +1,5 @@
 // Form handling module
-export function initForm() {
+window.initForm = function() {
   const form = document.getElementById('contactForm');
   const formStatus = form.querySelector('.form-status');
   const submitBtn = form.querySelector('button[type="submit"]');

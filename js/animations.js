@@ -1,10 +1,6 @@
 // GSAP animations module
-import { gsap } from 'https://cdn.skypack.dev/gsap';
-import { ScrollTrigger } from 'https://cdn.skypack.dev/gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
-
-export function initAnimations() {
+window.initAnimations = function() {
+  gsap.registerPlugin(ScrollTrigger);
   // Header animations
   gsap.to(".title-mask", {
     scaleX: 0,

@@ -1,5 +1,5 @@
 // Navigation module
-export function initNavigation() {
+window.initNavigation = function() {
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
   const navOverlay = document.querySelector('.nav-overlay');
