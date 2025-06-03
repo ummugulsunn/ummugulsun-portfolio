@@ -125,12 +125,40 @@
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
+      updatePlaceholderButtonText(newTheme);
+    }
+
+    const darkThemeFunMessage = "is it too dark for you i can fix that";
+    const lightThemeFunMessage = "Is it too bright for you? I can fix that too!";
+
+    function updatePlaceholderButtonText(theme) {
+        const button = document.querySelector('.theme-toggle-placeholder');
+        if (!button) return;
+
+        let message = '';
+        let ariaLabelSuffix = '';
+
+        if (theme === 'dark') {
+            message = darkThemeFunMessage;
+            ariaLabelSuffix = ". Switch to light mode.";
+            button.style.fontSize = '10px'; 
+        } else {
+            message = lightThemeFunMessage;
+            ariaLabelSuffix = ". Switch to dark mode.";
+            button.style.fontSize = '10px'; // Keep font size consistent for fun messages
+        }
+        button.textContent = message;
+        button.setAttribute('aria-label', message + ariaLabelSuffix);
+        button.style.whiteSpace = 'normal'; 
+        button.style.lineHeight = '1.2';
+        button.style.padding = '5px 8px'; // Adjust padding for potentially wrapped text
     }
 
     // Ensure theme is applied on load
     const savedTheme = localStorage.getItem('theme') || 
                       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', savedTheme);
+    updatePlaceholderButtonText(savedTheme);
   </script>
 </body>
 </html> 

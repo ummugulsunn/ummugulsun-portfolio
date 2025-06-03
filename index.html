@@ -2170,36 +2170,63 @@ gsap.utils.toArray("#certifications .experience-item").forEach(item => {
 
     // Theme Toggle
     const themeToggle = document.querySelector('.theme-toggle');
-    const sunIcon = document.querySelector('.sun-icon');
-    const moonIcon = document.querySelector('.moon-icon');
+    // const sunIcon = document.querySelector('.sun-icon'); // No longer needed directly here
+    // const moonIcon = document.querySelector('.moon-icon'); // No longer needed directly here
+
+    const darkThemeFunMessage = "is it too dark for you i can fix that";
+    const lightThemeFunMessage = "Is it too bright for you? I can fix that too!"; // Ensured English message
+
+    function updateUserInterfaceForTheme(themeToDisplay) {
+      const currentThemeToggle = document.querySelector('.theme-toggle');
+      if (!currentThemeToggle) return;
+
+      let message = '';
+      let ariaLabelSuffix = '';
+
+      if (themeToDisplay === 'dark') {
+        message = darkThemeFunMessage;
+        ariaLabelSuffix = " Switch to light mode.";
+      } else { // themeToDisplay === 'light'
+        message = lightThemeFunMessage;
+        ariaLabelSuffix = " Switch to dark mode.";
+      }
+      
+      currentThemeToggle.innerHTML = `<span style="font-size: 9px; text-align: center; line-height: 1.2; display: block; padding: 4px; word-break: break-word; color: var(--text-primary);">${message}</span>`;
+      currentThemeToggle.setAttribute('aria-label', message + ariaLabelSuffix);
+      currentThemeToggle.style.height = 'auto';
+      currentThemeToggle.style.minHeight = '48px';
+      currentThemeToggle.style.padding = '8px'; 
+    }
     
     // Check for saved theme preference or use system preference
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     const savedTheme = localStorage.getItem('theme');
+    let effectiveTheme;
     
     if (savedTheme) {
-      // If a theme was previously saved, use it
       document.documentElement.setAttribute('data-theme', savedTheme);
+      effectiveTheme = savedTheme;
     } else if (prefersDarkScheme.matches) {
-      // If no saved theme but system prefers dark, set to dark
       document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
+      localStorage.setItem('theme', 'dark'); // Save it if not set
+      effectiveTheme = 'dark';
     } else {
-      // Default to light theme
       document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
+      localStorage.setItem('theme', 'light'); // Save it if not set
+      effectiveTheme = 'light';
     }
+    updateUserInterfaceForTheme(effectiveTheme); // Set initial button appearance
     
     themeToggle.addEventListener('click', () => {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';
       
-      // Add transition class for smooth transition
       document.documentElement.classList.add('theme-transition');
       
-      // Apply the theme change
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
+      
+      updateUserInterfaceForTheme(newTheme); // Update button content based on the new theme
       
       // Update card shadows for any hovered elements
       document.querySelectorAll('.project-card:hover, .blog-card:hover').forEach(card => {

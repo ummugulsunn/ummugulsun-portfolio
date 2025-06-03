@@ -332,11 +332,35 @@
     themeToggleBtn.style.right = '20px';
     themeToggleBtn.style.padding = '10px';
     themeToggleBtn.style.zIndex = '1000';
+
+    const darkThemeFunMessage = "is it too dark for you i can fix that";
+    const lightThemeFunMessage = "Is it too bright for you? I can fix that too!";
+
+    function updateDynamicButtonText(button, theme) {
+        let message = '';
+        let ariaLabelSuffix = '';
+
+        if (theme === 'dark') {
+            message = darkThemeFunMessage;
+            ariaLabelSuffix = ". Switch to light mode.";
+        } else {
+            message = lightThemeFunMessage;
+            ariaLabelSuffix = ". Switch to dark mode.";
+        }
+        button.textContent = message;
+        button.setAttribute('aria-label', message + ariaLabelSuffix);
+        button.style.whiteSpace = 'normal'; 
+        button.style.fontSize = '10px'; 
+        button.style.lineHeight = '1.2';
+        // Padding is kept from dynamic button creation or can be adjusted here if all text buttons need same padding
+    }
+
     themeToggleBtn.onclick = () => {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
+      updateDynamicButtonText(themeToggleBtn, newTheme); // Update text
     };
     document.body.appendChild(themeToggleBtn);
 
@@ -344,6 +368,7 @@
     const savedTheme = localStorage.getItem('theme') || 
                       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', savedTheme);
+    updateDynamicButtonText(themeToggleBtn, savedTheme); // Set initial text for the dynamic button
   </script>
 </body>
 </html> 
