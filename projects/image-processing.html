@@ -354,26 +354,25 @@
     themeToggleBtn.style.padding = '10px';
     themeToggleBtn.style.zIndex = '1000';
 
-    const darkThemeFunMessage = "is it too dark for you i can fix that";
+    const darkThemeFunMessage = "Is it too dark for you? i can fix that";
     const lightThemeFunMessage = "Is it too bright for you? I can fix that too!";
 
-    function updateDynamicButtonText(button, theme) {
-        let message = '';
-        let ariaLabelSuffix = '';
+    function updateDynamicButtonAttributes(button, theme) {
+        if (!button) return;
+        button.textContent = 'Toggle Theme'; // Keep text constant
 
         if (theme === 'dark') {
-            message = darkThemeFunMessage;
-            ariaLabelSuffix = ". Switch to light mode.";
+            button.setAttribute('aria-label', "Dark mode active. Switch to light mode.");
+            button.title = darkThemeFunMessage;
         } else {
-            message = lightThemeFunMessage;
-            ariaLabelSuffix = ". Switch to dark mode.";
+            button.setAttribute('aria-label', "Light mode active. Switch to dark mode.");
+            button.title = lightThemeFunMessage;
         }
-        button.textContent = message;
-        button.setAttribute('aria-label', message + ariaLabelSuffix);
-        button.style.whiteSpace = 'normal'; 
-        button.style.fontSize = '10px'; 
-        button.style.lineHeight = '1.2';
-        // Padding is kept from dynamic button creation or can be adjusted here if all text buttons need same padding
+        // Reset any styles from previous text-override approach
+        button.style.whiteSpace = ''; 
+        button.style.fontSize = ''; 
+        button.style.lineHeight = '';
+        // button.style.padding = '10px'; // Padding is set when button is created, ensure it's correct
     }
 
     themeToggleBtn.onclick = () => {
@@ -381,7 +380,7 @@
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
-      updateDynamicButtonText(themeToggleBtn, newTheme); // Update text
+      updateDynamicButtonAttributes(themeToggleBtn, newTheme); // Update title and aria-label
     };
     document.body.appendChild(themeToggleBtn);
 
@@ -389,7 +388,7 @@
     const savedTheme = localStorage.getItem('theme') || 
                       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', savedTheme);
-    updateDynamicButtonText(themeToggleBtn, savedTheme); // Set initial text for the dynamic button
+    updateDynamicButtonAttributes(themeToggleBtn, savedTheme); // Set initial attributes for the dynamic button
   </script>
 </body>
 </html> 
