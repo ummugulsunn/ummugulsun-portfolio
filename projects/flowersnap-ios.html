@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flower Tracker - Ümmügülsün Türkmen</title>
+  <title>FlowerSnap iOS - Ümmügülsün Türkmen</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -110,10 +110,10 @@
       </svg>
       Back to Projects
     </a>
-    <h1 class="project-title">Flower Tracker</h1>
+    <h1 class="project-title">FlowerSnap iOS</h1>
     <div class="placeholder-content">
-      <p>Detailed information about the Flower Tracker project is coming soon!</p>
-      <p>This page will showcase the features, technologies, and development process of this exciting mobile application.</p>
+      <p>Detailed information about the FlowerSnap iOS project is coming soon!</p>
+      <p>This page will highlight the use of SwiftUI, Core ML, and Apple's Vision framework to deliver an offline-capable, privacy-first flower recognition experience.</p>
     </div>
   </div>
 
@@ -128,7 +128,7 @@
       updateButtonAttributes(newTheme);
     }
 
-    const darkThemeFunMessage = "Is it too dark for you? i can fix that";
+    const darkThemeFunMessage = "Is it too dark for you? I can fix that!";
     const lightThemeFunMessage = "Is it too bright for you? I can fix that too!";
 
     function updateButtonAttributes(theme) {
@@ -149,8 +149,7 @@
         button.style.padding = '10px';
     }
 
-    const savedTheme = localStorage.getItem('theme') || 
-                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateButtonAttributes(savedTheme);
   </script>
