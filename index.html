@@ -19,10 +19,25 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    window.addEventListener('load', function() {
-      gtag('js', new Date());
-      gtag('config', 'G-TRVJ40L9JG');
-    });
+    // Delay analytics until user interaction or 3 seconds
+    let analyticsLoaded = false;
+    function loadAnalytics() {
+      if (!analyticsLoaded) {
+        analyticsLoaded = true;
+        gtag('js', new Date());
+        gtag('config', 'G-TRVJ40L9JG', {
+          send_page_view: false
+        });
+        gtag('event', 'page_view');
+      }
+    }
+    
+    // Load analytics on user interaction
+    document.addEventListener('click', loadAnalytics, { once: true });
+    document.addEventListener('scroll', loadAnalytics, { once: true });
+    
+    // Fallback: load after 3 seconds
+    setTimeout(loadAnalytics, 3000);
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -551,12 +566,12 @@
     }
 
     .tag {
-      background: rgba(126, 103, 255, 0.15); /* Slight background for better contrast */
-      color: var(--primary);
+      background: rgba(126, 103, 255, 0.25); /* Stronger background for better contrast */
+      color: #ffffff; /* White text for maximum contrast */
       padding: 0.4rem 0.9rem; /* Adjusted padding */
       border-radius: 50px; /* Pill shape */
       font-size: 0.75rem; /* Smaller tag text */
-      font-weight: 600; /* Increased font weight for better readability */
+      font-weight: 700; /* Bold font weight for better readability */
       letter-spacing: 0.3px;
       transition: all 0.25s ease;
       display: inline-flex;
@@ -1225,11 +1240,14 @@
     }
 
     .blog-category {
-      color: var(--primary);
-      font-weight: 600;
+      color: #ffffff;
+      background: var(--primary);
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
     }
 
     .blog-content h3 {
@@ -1255,12 +1273,12 @@
     }
 
     .blog-tags .tag {
-      background: rgba(126, 103, 255, 0.15);
-      color: var(--primary);
+      background: rgba(126, 103, 255, 0.25);
+      color: #ffffff;
       padding: 0.4rem 1rem;
       border-radius: 50px;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       border: 1px solid var(--primary);
       transition: all 0.3s ease;
     }
@@ -1381,9 +1399,12 @@
       font-size: 1.4rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      color: var(--primary);
+      color: #ffffff;
+      background: var(--primary);
       margin-right: 1.5rem;
-      font-weight: 600;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
     }
 
     .project-heading-line {
@@ -1990,15 +2011,22 @@
         });
       });
       
-      // Register ScrollTrigger
+      // Register ScrollTrigger with optimized settings
       gsap.registerPlugin(ScrollTrigger);
+      
+      // Optimize ScrollTrigger for better performance
+      ScrollTrigger.config({
+        ignoreMobileResize: true,
+        autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
+      });
       
       // About section animations
       gsap.to(".about-content", {
         scrollTrigger: {
           trigger: ".about-content",
           start: "top 80%",
-          toggleActions: "play none none none"
+          toggleActions: "play none none none",
+          preventOverlaps: true
         },
         opacity: 1,
         x: 0,
