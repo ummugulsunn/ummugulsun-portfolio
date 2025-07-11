@@ -761,31 +761,7 @@
       fill: var(--light);
     }
 
-    .back-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: var(--primary);
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      z-index: 99;
-    }
 
-    .back-to-top.visible {
-      opacity: 1;
-    }
-
-    .back-to-top:hover {
-      transform: translateY(-5px);
-    }
 
     @media (max-width: 768px) {
       h1 {
@@ -812,14 +788,22 @@
         height: 44px;
       }
       
+      .theme-tooltip {
+        display: none;
+      }
+      
       .action-buttons {
         bottom: 20px;
         right: 20px;
       }
       
       .back-to-top {
-        width: 44px;
-        height: 44px;
+        width: 50px;
+        height: 50px;
+      }
+      
+      .back-to-top-tooltip {
+        display: none;
       }
     }
 
@@ -950,13 +934,52 @@
       z-index: 99;
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-      overflow: hidden;
+      overflow: visible;
     }
 
     .theme-toggle:hover {
       transform: scale(1.1);
       border-color: var(--primary);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .theme-tooltip {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--card-bg);
+      color: var(--text-primary);
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    .theme-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--card-bg);
+      filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+    }
+
+    .theme-toggle:hover .theme-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(-5px);
     }
 
     .theme-toggle svg {
@@ -1255,18 +1278,191 @@
       color: var(--light);
     }
 
+    .blog-status {
+      text-align: center;
+      margin: 3rem 0;
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(20px);
+    }
+
+    .status-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .status-badge {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--light);
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(126, 103, 255, 0.4); }
+      50% { box-shadow: 0 0 0 10px rgba(126, 103, 255, 0); }
+    }
+
+    .status-message {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .blog-preview {
+      margin: 4rem 0;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .preview-item {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preview-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(126, 103, 255, 0.15);
+      border-color: var(--primary);
+    }
+
+    .preview-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 8px 20px rgba(126, 103, 255, 0.3);
+    }
+
+    .preview-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--light);
+    }
+
+    .preview-item h4 {
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .preview-item p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .coming-soon {
+      background: rgba(255, 193, 7, 0.2);
+      color: #ffc107;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 193, 7, 0.3);
+    }
+
+    .blog-newsletter {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 20px;
+      padding: 3rem;
+      text-align: center;
+      margin-top: 4rem;
+      color: var(--light);
+    }
+
+    .newsletter-content h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--light);
+    }
+
+    .newsletter-content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 1rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 0.8rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--dark);
+      font-size: 0.9rem;
+    }
+
+    .newsletter-input::placeholder {
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    .newsletter-btn {
+      background: var(--light);
+      color: var(--primary);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
     @media (max-width: 768px) {
-      .blog-grid {
+      .preview-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
       }
       
-      .blog-image {
-        height: 200px;
-      }
-      
-      .blog-content {
+      .preview-item {
         padding: 1.5rem;
+      }
+      
+      .blog-newsletter {
+        padding: 2rem;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .newsletter-content h3 {
+        font-size: 1.5rem;
       }
     }
 
@@ -1281,32 +1477,84 @@
     }
 
     .back-to-top {
-      width: 48px;
-      height: 48px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: var(--light);
+      background: var(--card-bg);
+      color: var(--text-primary);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      font-size: 1.3rem;
+      font-weight: 600;
+      backdrop-filter: blur(20px);
+      border: 2px solid transparent;
+      position: relative;
+      overflow: visible;
+    }
+    
+    .back-to-top:hover {
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: 0 8px 30px rgba(126, 103, 255, 0.3);
+      border-color: var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--light);
     }
     
     [data-theme="light"] .back-to-top {
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    [data-theme="light"] .back-to-top:hover {
+      box-shadow: 0 8px 30px rgba(126, 103, 255, 0.2);
     }
 
     .back-to-top.visible {
       opacity: 1;
     }
 
-    .back-to-top:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    .back-to-top-tooltip {
+      position: absolute;
+      bottom: 65px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--card-bg);
+      color: var(--text-primary);
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    .back-to-top-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--card-bg);
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+    }
+
+    .back-to-top:hover .back-to-top-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(-5px);
     }
 
     .section-description {
@@ -1452,10 +1700,16 @@
     <svg class="moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M12.1 22c-4.3 0-7.9-3.1-8.6-7.3-.8-4.9 2.3-9.5 7.1-10.6.5-.1 1 .2 1.1.6.1.5-.1.9-.5 1.1-2.6 1.5-3.7 4.9-2.5 7.7 1.2 2.8 4.4 4.1 7.3 3.2.5-.2 1 .1 1.2.5.1.5-.1 1-.5 1.2-1.5.6-3 .9-4.6.9-.3 0-.7 0-1 0z"></path>
     </svg>
+    <div class="theme-tooltip">Switch to light theme</div>
   </button>
   
   <div class="action-buttons">
-    <div class="back-to-top">↑</div>
+    <div class="back-to-top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+      </svg>
+      <div class="back-to-top-tooltip">Back to top</div>
+    </div>
   </div>
 
   <nav class="nav">
@@ -1599,28 +1853,27 @@
       </div>
       
       <div class="project-grid">
-        <a href="projects/adventure-game.html" class="project-card" aria-label="Adventure Game project - Java text-based adventure game with object-oriented programming">
-          <!-- <div class="project-number">01</div> -->
+        <a href="projects/image-processing.html" class="project-card" aria-label="Image Processing project - Python algorithms for image manipulation and analysis">
           <div class="project-image code">
-            <!-- Icons serve as placeholder, actual images would be better -->
+            <!-- Icons serve as placeholder -->
           </div>
           <div class="project-content">
-            <h3>Adventure Game</h3>
-            <p>A text-based adventure game implementing advanced object-oriented programming patterns and dynamic storytelling algorithms.</p>
+            <h3>Image Processing</h3>
+            <p>Exploring various image processing techniques and algorithms including filtering, edge detection, and computer vision fundamentals.</p>
             <div class="project-meta">
-              <div class="project-year">2024</div>
+              <div class="project-year">Early 2024</div>
               <div class="project-github">
-                <a href="https://github.com/ummugulsunn/adventure-game" target="_blank" aria-label="View Adventure Game source code on GitHub">
+                <a href="https://github.com/ummugulsunn/Image-Processing" target="_blank" aria-label="View Image Processing source code on GitHub">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
-                    <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                   </svg>
                 </a>
               </div>
             </div>
             <div class="project-tags">
-              <span class="tag">Java</span>
-              <span class="tag">OOP</span>
-              <span class="tag">Game</span>
+              <span class="tag">Python</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">Jupyter</span>
             </div>
           </div>
         </a>
@@ -1861,64 +2114,61 @@
 
   <section id="blog" class="section">
     <h2 class="section-title">Technical Blog</h2>
-    <p class="section-description">Sharing insights and experiences in software development, with a focus on React Native, TypeScript, and modern web technologies.</p>
-    <div class="blog-grid">
-      <a href="blog/getting-started-with-java.html" class="blog-card">
-        <div class="blog-image">
-          <img src="images/blog/java-guide.jpg" alt="Java Programming" loading="lazy">
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta">
-            <span class="blog-date">Feb 15, 2024</span>
-            <span class="blog-category">Programming</span>
-          </div>
-          <h3>Getting Started with Java: A Beginner's Guide</h3>
-          <p>A comprehensive guide to Java fundamentals, covering core concepts, best practices, and practical examples for aspiring developers.</p>
-          <div class="blog-tags">
-            <span class="tag">Java</span>
-            <span class="tag">Programming Fundamentals</span>
-            <span class="tag">OOP</span>
-          </div>
-        </div>
-      </a>
+    <p class="section-description">Documenting my journey in software development, exploring cutting-edge technologies, and sharing practical insights for fellow developers.</p>
+    
+    <div class="blog-status">
+      <div class="status-indicator">
+        <span class="status-badge">In Progress</span>
+        <p class="status-message">New articles on modern development practices coming soon!</p>
+      </div>
+    </div>
 
-      <a href="blog/react-native-tips.html" class="blog-card">
-        <div class="blog-image">
-          <img src="images/blog/react-native.jpg" alt="React Native Development" loading="lazy">
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta">
-            <span class="blog-date">Feb 10, 2024</span>
-            <span class="blog-category">Mobile Development</span>
+    <div class="blog-preview">
+      <div class="preview-grid">
+        <div class="preview-item">
+          <div class="preview-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
           </div>
-          <h3>Essential React Native Performance Optimization</h3>
-          <p>Deep dive into React Native performance optimization techniques, including memory management, render optimization, and state management best practices.</p>
-          <div class="blog-tags">
-            <span class="tag">React Native</span>
-            <span class="tag">Performance</span>
-            <span class="tag">Mobile</span>
-          </div>
+          <h4>Advanced Java Patterns</h4>
+          <p>Deep dive into design patterns and best practices for enterprise Java development</p>
+          <span class="coming-soon">Coming Soon</span>
         </div>
-      </a>
 
-      <a href="blog/supabase-authentication.html" class="blog-card">
-        <div class="blog-image">
-          <img src="images/blog/supabase-auth.jpg" alt="Supabase Authentication" loading="lazy">
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta">
-            <span class="blog-date">Feb 5, 2024</span>
-            <span class="blog-category">Backend</span>
+        <div class="preview-item">
+          <div class="preview-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
           </div>
-          <h3>Secure Authentication with Supabase</h3>
-          <p>Learn how to implement robust authentication in your applications using Supabase, including social auth, row-level security, and best practices.</p>
-          <div class="blog-tags">
-            <span class="tag">Supabase</span>
-            <span class="tag">Security</span>
-            <span class="tag">Authentication</span>
-          </div>
+          <h4>iOS Development with SwiftUI</h4>
+          <p>Building modern iOS applications with declarative UI frameworks and Core ML integration</p>
+          <span class="coming-soon">Coming Soon</span>
         </div>
-      </a>
+
+        <div class="preview-item">
+          <div class="preview-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+              <path d="M20 6L9 17l-5-5 1.4-1.4L9 14.2l9.6-9.6z"/>
+            </svg>
+          </div>
+          <h4>Computer Vision Techniques</h4>
+          <p>Practical applications of image processing and machine learning in real-world projects</p>
+          <span class="coming-soon">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-newsletter">
+      <div class="newsletter-content">
+        <h3>Stay Updated</h3>
+        <p>Get notified when new technical articles are published</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Enter your email" class="newsletter-input">
+          <button class="newsletter-btn">Subscribe</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2262,19 +2512,16 @@ gsap.utils.toArray("#certifications .experience-item").forEach(item => {
 
     // Theme Toggle
     const themeToggle = document.querySelector('.theme-toggle');
-    const initialButtonHTML = themeToggle.innerHTML; // Store initial SVG content
-    const initialButtonHeight = themeToggle.style.height || '48px';
-    const initialButtonPadding = themeToggle.style.padding || '';
-
-    const darkThemeFunMessage = "Is it too dark for you? i can fix that"; // Corrected dark theme message based on your last change
-    const lightThemeFunMessage = "Is it too bright for you? I can fix that too!";
+    const themeTooltip = document.querySelector('.theme-tooltip');
 
     function updateThemeButtonAria(theme) {
       if (!themeToggle) return;
       if (theme === 'dark') {
         themeToggle.setAttribute('aria-label', "Dark mode active. Switch to light mode.");
+        if (themeTooltip) themeTooltip.textContent = "Switch to light theme";
       } else {
         themeToggle.setAttribute('aria-label', "Light mode active. Switch to dark mode.");
+        if (themeTooltip) themeTooltip.textContent = "Switch to dark theme";
       }
     }
     
@@ -2295,25 +2542,7 @@ gsap.utils.toArray("#certifications .experience-item").forEach(item => {
       localStorage.setItem('theme', 'light');
       effectiveTheme = 'light';
     }
-    updateThemeButtonAria(effectiveTheme); // Set initial aria-label
-    // Icons are already set by HTML and CSS handles which one is visible
-
-    themeToggle.addEventListener('mouseenter', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const message = currentTheme === 'dark' ? darkThemeFunMessage : lightThemeFunMessage;
-        
-        themeToggle.innerHTML = `<span style="font-size: 9px; text-align: center; line-height: 1.2; display: block; padding: 4px; word-break: break-word; color: var(--text-primary);">${message}</span>`;
-        themeToggle.style.height = 'auto';
-        themeToggle.style.minHeight = '48px';
-        themeToggle.style.padding = '8px';
-    });
-
-    themeToggle.addEventListener('mouseleave', () => {
-        themeToggle.innerHTML = initialButtonHTML;
-        themeToggle.style.height = initialButtonHeight;
-        themeToggle.style.padding = initialButtonPadding;
-        // ARIA label remains as set by updateThemeButtonAria
-    });
+    updateThemeButtonAria(effectiveTheme); // Set initial aria-label and tooltip text
     
     themeToggle.addEventListener('click', () => {
       const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -2322,12 +2551,8 @@ gsap.utils.toArray("#certifications .experience-item").forEach(item => {
       document.documentElement.classList.add('theme-transition');
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
-      updateThemeButtonAria(newTheme); // Update aria-label
+      updateThemeButtonAria(newTheme); // Update aria-label and tooltip text
       
-      // If mouse is still over the button after click, it should update the message shown
-      // This can be handled by the mouseleave and then a new mouseenter if still hovered,
-      // or explicitly if needed, but current setup might be fine.
-
       // Update card shadows for any hovered elements
       document.querySelectorAll('.project-card:hover, .blog-card:hover').forEach(card => {
         if (newTheme === 'light') {
@@ -2340,7 +2565,7 @@ gsap.utils.toArray("#certifications .experience-item").forEach(item => {
       // Remove transition class after transition completes
       setTimeout(() => {
         document.documentElement.classList.remove('theme-transition');
-      }, 400); // Slightly longer timeout for complete transitions
+      }, 400);
     });
 
     // Add hover effect for project and blog cards
