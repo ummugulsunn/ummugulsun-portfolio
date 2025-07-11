@@ -15,47 +15,32 @@
   <title>Ümmügülsün Türkmen | Portfolio</title>
   
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TRVJ40L9JG"></script>
+  <script defer src="https://www.googletagmanager.com/gtag/js?id=G-TRVJ40L9JG"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-TRVJ40L9JG');
+    window.addEventListener('load', function() {
+      gtag('js', new Date());
+      gtag('config', 'G-TRVJ40L9JG');
+    });
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://i.imgur.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"></noscript>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <style>
     :root {
-      /* Dark theme (default) */
-      --primary: #7E67FF;
-      --secondary: #0099FF;
-      --dark: #080808;
-      --light: #ffffff;
-      --accent: #FF3366;
-      --bg-primary: var(--dark);
-      --bg-secondary: #121212;
-      --text-primary: var(--light);
-      --text-secondary: rgba(255, 255, 255, 0.7);
-      --card-bg: rgba(255, 255, 255, 0.05);
-      --toggle-bg: rgba(255, 255, 255, 0.1);
-      --section-heading: #7E67FF;
-      --border-color: rgba(255, 255, 255, 0.1);
-      scroll-behavior: smooth;
+      --primary:#7E67FF;--secondary:#0099FF;--dark:#080808;--light:#ffffff;--accent:#FF3366;--bg-primary:var(--dark);--bg-secondary:#121212;--text-primary:var(--light);--text-secondary:rgba(255,255,255,0.7);--card-bg:rgba(255,255,255,0.05);--toggle-bg:rgba(255,255,255,0.1);--section-heading:#7E67FF;--border-color:rgba(255,255,255,0.1);scroll-behavior:smooth;
     }
 
     [data-theme="light"] {
-      --bg-primary: #ffffff;
-      --bg-secondary: #f5f5f5;
-      --text-primary: #080808;
-      --text-secondary: rgba(0, 0, 0, 0.7);
-      --card-bg: rgba(0, 0, 0, 0.05);
-      --toggle-bg: rgba(0, 0, 0, 0.1);
-      --section-heading: #7E67FF;
-      --border-color: rgba(0, 0, 0, 0.1);
+      --bg-primary:#ffffff;--bg-secondary:#f5f5f5;--text-primary:#080808;--text-secondary:rgba(0,0,0,0.8);--card-bg:rgba(0,0,0,0.05);--toggle-bg:rgba(0,0,0,0.1);--section-heading:#6B46C1;--border-color:rgba(0,0,0,0.1);
     }
 
     * {
@@ -566,12 +551,12 @@
     }
 
     .tag {
-      background: transparent; /* Outline style */
+      background: rgba(126, 103, 255, 0.15); /* Slight background for better contrast */
       color: var(--primary);
       padding: 0.4rem 0.9rem; /* Adjusted padding */
       border-radius: 50px; /* Pill shape */
       font-size: 0.75rem; /* Smaller tag text */
-      font-weight: 500;
+      font-weight: 600; /* Increased font weight for better readability */
       letter-spacing: 0.3px;
       transition: all 0.25s ease;
       display: inline-flex;
@@ -1270,11 +1255,12 @@
     }
 
     .blog-tags .tag {
-      background: var(--card-bg);
+      background: rgba(126, 103, 255, 0.15);
       color: var(--primary);
       padding: 0.4rem 1rem;
       border-radius: 50px;
       font-size: 0.85rem;
+      font-weight: 600;
       border: 1px solid var(--primary);
       transition: all 0.3s ease;
     }
@@ -1506,7 +1492,22 @@
     <h2 class="section-title">About Me</h2>
     <div class="about-grid">
       <div class="about-image">
-         <img src="https://i.imgur.com/LhriYhI.png" alt="Ümmügülsün Türkmen">
+        <picture>
+          <source 
+            srcset="https://i.imgur.com/LhriYhI.webp" 
+            type="image/webp"
+            media="(min-width: 400px)">
+          <source 
+            srcset="https://i.imgur.com/LhriYhI_400x400.jpg" 
+            type="image/jpeg"
+            media="(max-width: 399px)">
+          <img 
+            src="https://i.imgur.com/LhriYhI_400x400.jpg" 
+            alt="Ümmügülsün Türkmen - Computer Engineering Student"
+            width="400" 
+            height="400"
+            loading="lazy">
+        </picture>
       </div>
       <div class="about-content">
         <p>I'm a curious and passionate Computer Engineering student with hands-on experience in object-oriented programming, image processing, and collaborative development projects.</p>
@@ -1588,7 +1589,7 @@
       </div>
       
       <div class="project-grid">
-        <a href="projects/adventure-game.html" class="project-card">
+        <a href="projects/adventure-game.html" class="project-card" aria-label="Adventure Game project - Java text-based adventure game with object-oriented programming">
           <!-- <div class="project-number">01</div> -->
           <div class="project-image code">
             <!-- Icons serve as placeholder, actual images would be better -->
@@ -1599,7 +1600,7 @@
             <div class="project-meta">
               <div class="project-year">2024</div>
               <div class="project-github">
-                <a href="https://github.com/ummugulsunn/adventure-game" target="_blank" aria-label="View code on GitHub">
+                <a href="https://github.com/ummugulsunn/adventure-game" target="_blank" aria-label="View Adventure Game source code on GitHub">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
                     <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                   </svg>
@@ -1616,7 +1617,7 @@
 
 
 
-        <a href="projects/image-processing.html" class="project-card">
+        <a href="projects/image-processing.html" class="project-card" aria-label="Image Processing project - Python algorithms for image manipulation and analysis">
           <!-- <div class="project-number">03</div> -->
           <div class="project-image code">
             <!-- Icons serve as placeholder -->
@@ -1627,7 +1628,7 @@
             <div class="project-meta">
               <div class="project-year">2024</div>
               <div class="project-github">
-                <a href="https://github.com/ummugulsunn/Image-Processing" target="_blank" aria-label="View code on GitHub">
+                <a href="https://github.com/ummugulsunn/Image-Processing" target="_blank" aria-label="View Image Processing source code on GitHub">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
                     <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                   </svg>
@@ -1642,7 +1643,7 @@
           </div>
         </a>
 
-        <a href="projects/compnetworks-final.html" class="project-card">
+        <a href="projects/compnetworks-final.html" class="project-card" aria-label="Computer Networks Final Project - Python networking implementation">
           <!-- <div class="project-number">04</div> -->
           <div class="project-image code">
             <!-- Icons serve as placeholder -->
@@ -1653,7 +1654,7 @@
             <div class="project-meta">
               <div class="project-year">2024</div>
               <div class="project-github">
-                <a href="https://github.com/ummugulsunn/CompNetworksFinal" target="_blank" aria-label="View code on GitHub">
+                <a href="https://github.com/ummugulsunn/CompNetworksFinal" target="_blank" aria-label="View Computer Networks Final Project source code on GitHub">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
                     <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                   </svg>
@@ -1667,7 +1668,7 @@
           </div>
         </a>
 
-        <a href="projects/flowersnap-ios.html" class="project-card">
+        <a href="projects/flowersnap-ios.html" class="project-card" aria-label="FlowerSnap iOS app - Native iOS flower identification using Core ML">
           <div class="project-image mobile"></div>
           <div class="project-content">
             <h3>FlowerSnap iOS</h3>
@@ -1675,7 +1676,7 @@
             <div class="project-meta">
               <div class="project-year">2025</div>
               <div class="project-github">
-                <a href="https://github.com/ummugulsunn/FlowerSnap" target="_blank" aria-label="View code on GitHub">
+                <a href="https://github.com/ummugulsunn/FlowerSnap" target="_blank" aria-label="View FlowerSnap iOS source code on GitHub">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
                     <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                   </svg>
@@ -1929,7 +1930,12 @@
     });
 
     // Initialize GSAP animations
-    document.addEventListener("DOMContentLoaded", function() {
+    function initGSAPAnimations() {
+      if (typeof gsap === 'undefined') {
+        setTimeout(initGSAPAnimations, 100);
+        return;
+      }
+      
       // Header animations
       gsap.to(".title-mask", {
         scaleX: 0,
@@ -2097,6 +2103,11 @@ gsap.utils.toArray("#certifications .experience-item").forEach(item => {
           ease: "power3.out"
         });
       });
+    }
+
+    // Initialize animations when GSAP is ready
+    document.addEventListener("DOMContentLoaded", function() {
+      initGSAPAnimations();
     });
 
     // Loading state
@@ -2586,8 +2597,8 @@ gsap.utils.toArray("#certifications .experience-item").forEach(item => {
       // Observe sections for animations
       document.querySelectorAll('.section').forEach(section => {
         observer.observe(section);
-      });
-    </script>
+    });
+  </script>
 </body>
 
 </html>
