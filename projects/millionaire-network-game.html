@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Millionaire Network Game - Multiplayer Quiz Game | Ümmügülsün Türkmen</title>
+  <meta name="description" content="Multiplayer quiz game inspired by 'Who Wants to Be a Millionaire' featuring real-time networking, player management, and interactive gameplay mechanics.">
+  
+  <style>
+    :root {
+      --primary: #7E67FF;
+      --secondary: #0099FF;
+      --dark: #080808;
+      --light: #ffffff;
+      --accent: #FF3366;
+      --bg-primary: var(--dark);
+      --bg-secondary: #121212;
+      --text-primary: var(--light);
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f5f5;
+      --text-primary: #080808;
+      --text-secondary: rgba(0, 0, 0, 0.8);
+      --card-bg: rgba(0, 0, 0, 0.05);
+      --border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      background: var(--card-bg);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
+    }
+
+    .back-link:hover {
+      color: var(--primary);
+      transform: translateX(-3px);
+      border-color: var(--primary);
+    }
+
+    .back-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .project-header {
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+
+    .project-title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .project-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .project-meta-item svg {
+      width: 18px;
+      height: 18px;
+      opacity: 0.8;
+      fill: currentColor;
+    }
+
+    .project-image-placeholder {
+      width: 100%;
+      height: 400px;
+      border-radius: 12px;
+      margin-bottom: 3rem;
+      background: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      font-style: italic;
+      border: 1px solid var(--border-color);
+    }
+
+    .project-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 4rem;
+    }
+
+    .project-description {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .project-description p, .project-description ul {
+      margin-bottom: 1.5rem;
+    }
+    
+    .project-description h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .project-description ul {
+      list-style-position: inside;
+      padding-left: 0;
+    }
+
+    .project-sidebar {
+      position: sticky;
+      top: 2rem;
+      height: fit-content;
+    }
+
+    .project-details-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .project-details-card h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .tech-item {
+      background: var(--primary);
+      color: var(--light);
+      padding: 0.4rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      transition: background-color 0.3s ease;
+    }
+    
+    .tech-item:hover {
+      background-color: var(--secondary);
+    }
+
+    .link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .project-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      padding: 0.8rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .project-link:hover {
+      transform: translateX(3px);
+      border-color: var(--primary);
+      background: rgba(255,255,255,0.06);
+    }
+    
+    .project-link svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--primary);
+    }
+
+    @media (max-width: 992px) {
+      .project-content {
+        grid-template-columns: 1fr;
+      }
+
+      .project-sidebar {
+        position: static;
+      }
+      
+      .project-image-placeholder {
+        height: 300px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .project-title {
+        font-size: 2.5rem;
+      }
+
+      .project-meta {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html#projects" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M19 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H19v-2z"/>
+      </svg>
+      Back to Projects
+    </a>
+
+    <header class="project-header">
+      <h1 class="project-title">Millionaire Network Game</h1>
+      <div class="project-meta">
+        <div class="project-meta-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+          </svg>
+          <span>Year: 2024</span>
+        </div>
+        <div class="project-meta-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+          <span>Role: Personal Project</span>
+        </div>
+      </div>
+      <div class="project-image-placeholder">
+        <span>Multiplayer Quiz Game Interface Coming Soon</span>
+      </div>
+    </header>
+
+    <main class="project-content">
+      <div class="project-description">
+        <p>Millionaire Network Game is a multiplayer quiz game inspired by the popular TV show "Who Wants to Be a Millionaire." This project demonstrates advanced networking concepts, real-time communication, and interactive gameplay mechanics through a client-server architecture.</p>
+
+        <h2>Game Features</h2>
+        <ul>
+          <li>Real-time multiplayer gameplay with multiple concurrent players</li>
+          <li>Progressive difficulty levels with increasing prize money</li>
+          <li>Classic lifelines: 50/50, Phone a Friend, Ask the Audience</li>
+          <li>Live player rankings and score tracking</li>
+          <li>Customizable question categories and difficulty settings</li>
+          <li>Spectator mode for watching ongoing games</li>
+        </ul>
+
+        <h2>Technical Architecture</h2>
+        <p>The game implements a robust client-server architecture using Python's socket programming capabilities. The server manages multiple client connections simultaneously, handles game state synchronization, and ensures fair gameplay through proper session management.</p>
+
+        <p>Key technical features include thread-safe operations, efficient data serialization, and real-time communication protocols that maintain game integrity across network connections.</p>
+
+        <h2>Networking Implementation</h2>
+        <p>The project showcases advanced networking concepts including TCP socket programming, multi-threading for concurrent client handling, and custom protocol design for game-specific communication. Error handling and connection management ensure stable gameplay even with network interruptions.</p>
+
+        <h2>Learning Outcomes</h2>
+        <p>This project provided hands-on experience with network programming, concurrent system design, and real-time application development. It enhanced my understanding of client-server architectures and multiplayer game mechanics.</p>
+      </div>
+
+      <aside class="project-sidebar">
+        <div class="project-details-card">
+          <h3>Technologies Used</h3>
+          <div class="tech-list">
+            <span class="tech-item">Python</span>
+            <span class="tech-item">Socket Programming</span>
+            <span class="tech-item">Threading</span>
+            <span class="tech-item">JSON</span>
+            <span class="tech-item">Tkinter</span>
+            <span class="tech-item">SQLite</span>
+          </div>
+        </div>
+
+        <div class="project-details-card">
+          <h3>Project Links</h3>
+          <div class="link-list">
+            <a href="https://github.com/ummugulsunn/millionaire-network-game" target="_blank" class="project-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    // Theme support
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+  </script>
+</body>
+</html> 
