@@ -1,360 +1,322 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ehliyet Rehberim - Gizlilik Politikası. Kişisel verilerinizin nasıl korunduğunu öğrenin.">
-  <meta name="keywords" content="Ehliyet Rehberim, ehliyet sınavı, gizlilik politikası, veri koruma, KVKK, GDPR">
-  <meta name="author" content="Ümmügülsün Türkmen">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Gizlilik Politikası - Ehliyet Rehberim">
-  <meta property="og:description" content="Ehliyet Rehberim uygulaması gizlilik politikası. Verileriniz güvende.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ummugulsun.me/ehliyet-rehberim/privacy-policy.html">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Gizlilik Politikası - Ehliyet Rehberim">
-  <meta name="twitter:description" content="Ehliyet Rehberim gizlilik politikası">
-  
-  <title>Gizlilik Politikası - Ehliyet Rehberim</title>
-  
-  <link rel="canonical" href="https://ummugulsun.me/ehliyet-rehberim/privacy-policy.html">
-  <link rel="icon" type="image/png" href="https://ummugulsun.me/favicon.png">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --primary: #6366F1;
-      --secondary: #8B5CF6;
-      --dark: #080808;
-      --light: #ffffff;
-      --accent: #22C55E;
-      --warning: #F59E0B;
-      --bg-primary: var(--dark);
-      --bg-secondary: #121212;
-      --text-primary: var(--light);
-      --text-secondary: rgba(255,255,255,0.7);
-      --card-bg: rgba(255,255,255,0.05);
-      --border-color: rgba(255,255,255,0.1);
-      --section-heading: #6366F1;
-    }
-
-    [data-theme="light"] {
-      --bg-primary: #ffffff;
-      --bg-secondary: #f5f5f5;
-      --text-primary: #080808;
-      --text-secondary: rgba(0,0,0,0.8);
-      --card-bg: rgba(0,0,0,0.05);
-      --border-color: rgba(0,0,0,0.1);
-      --section-heading: #6B46C1;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Space Grotesk', sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      letter-spacing: 0.2px;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 3rem;
-      padding: 2rem;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 20px;
-      color: white;
-    }
-
-    .header h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .header h2 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      opacity: 0.9;
-    }
-
-    .content {
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 15px;
-      border: 1px solid var(--border-color);
-      margin-bottom: 2rem;
-    }
-
-    .content h3 {
-      color: var(--section-heading);
-      font-size: 1.5rem;
-      margin: 2rem 0 1rem 0;
-      font-weight: 600;
-    }
-
-    .content h3:first-child {
-      margin-top: 0;
-    }
-
-    .content p {
-      margin-bottom: 1rem;
-      color: var(--text-secondary);
-    }
-
-    .content ul {
-      margin: 1rem 0;
-      padding-left: 2rem;
-    }
-
-    .content li {
-      margin-bottom: 0.5rem;
-      color: var(--text-secondary);
-    }
-
-    .important {
-      background: linear-gradient(135deg, #22C55E, #16A34A);
-      color: white;
-      padding: 1rem;
-      border-radius: 10px;
-      margin: 1rem 0;
-      font-weight: 600;
-    }
-
-    .warning {
-      background: linear-gradient(135deg, #F59E0B, #D97706);
-      color: white;
-      padding: 1rem;
-      border-radius: 10px;
-      margin: 1rem 0;
-      font-weight: 600;
-    }
-
-    .contact-info {
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 15px;
-      border: 1px solid var(--border-color);
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    .back-to-portfolio {
-      display: inline-block;
-      background: var(--primary);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 25px;
-      text-decoration: none;
-      margin-top: 1rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-    }
-
-    .back-to-portfolio:hover {
-      background: var(--secondary);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
-    }
-
-    .back-to-app {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 25px;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .back-to-app:hover {
-      background: #16A34A;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
-    }
-
-    .footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        padding: 1rem;
-      }
-      
-      .header h1 {
-        font-size: 2rem;
-      }
-      
-      .content {
-        padding: 1.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gizlilik Politikası - Ehliyet Rehberim</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2563eb;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #1e40af;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3b82f6;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #374151;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        .update-date {
+            text-align: center;
+            font-style: italic;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+        .contact-info {
+            background-color: #eff6ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .highlight {
+            background-color: #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #f59e0b;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+        .data-table th {
+            background-color: #f3f4f6;
+            font-weight: 600;
+        }
+        .nav-links {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .nav-links a {
+            color: #2563eb;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 20px;
+            border: 2px solid #2563eb;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover {
+            background-color: #2563eb;
+            color: white;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .nav-links a {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>🔒 Gizlilik Politikası</h1>
-      <h2>Ehliyet Rehberim - Sınav Hazırlık Uygulaması</h2>
-    </div>
-    
-    <div class="content">
-      <h3>1. Giriş</h3>
-      <p>Ehliyet Rehberim uygulamasını kullandığınız için teşekkür ederiz. Bu gizlilik politikası, uygulamamızın kişisel verilerinizi nasıl topladığını, kullandığını ve koruduğunu açıklar.</p>
+    <div class="container">
+        <div class="nav-links">
+            <a href="index.html">← Ana Sayfa</a>
+            <a href="terms-of-service.html">Kullanım Şartları</a>
+        </div>
 
-      <h3>2. Toplanan Veriler</h3>
-      <p>Ehliyet Rehberim uygulaması, aşağıdaki verileri toplayabilir:</p>
-      <ul>
-        <li><strong>Kullanıcı Hesap Bilgileri:</strong> Google/Apple Sign-In ile giriş bilgileri</li>
-        <li><strong>İlerleme Verileri:</strong> Sınav sonuçları, doğru/yanlış cevaplar, puanlar</li>
-        <li><strong>Uygulama Kullanım Verileri:</strong> Hangi bölümleri kullandığınız, çalışma süreleri</li>
-        <li><strong>Cihaz Bilgileri:</strong> Uygulama performansı için gerekli teknik veriler</li>
-        <li><strong>Tercihler:</strong> Tema seçimi, bildirim ayarları</li>
-      </ul>
+        <h1>🔒 Gizlilik Politikası</h1>
+        <div class="update-date">
+            <strong>Son Güncelleme Tarihi:</strong> 13 Ocak 2025
+        </div>
 
-      <h3>3. Veri İşleme ve Saklama</h3>
-      <p>Verileriniz aşağıdaki şekilde işlenir ve saklanır:</p>
-      <ul>
-        <li><strong>Yerel Depolama:</strong> İlerleme verileriniz cihazınızda güvenli şekilde saklanır</li>
-        <li><strong>Bulut Yedekleme:</strong> Firebase üzerinden güvenli yedekleme (isteğe bağlı)</li>
-        <li><strong>Şifreleme:</strong> Tüm veriler şifreleme ile korunur</li>
-        <li><strong>Anonimleştirme:</strong> Analitik veriler anonim olarak toplanır</li>
-      </ul>
+        <div class="contact-info">
+            <h3>📞 İletişim Bilgileri</h3>
+            <p><strong>Uygulama:</strong> Ehliyet Rehberim</p>
+            <p><strong>Geliştirici:</strong> TurkmenApps</p>
+            <p><strong>E-posta:</strong> ugturkmen.dev@gmail.com</p>
+        </div>
 
-      <div class="important">
-        <strong>🔐 Güvenlik Önlemleri:</strong><br>
-        • Verileriniz AES-256 şifreleme ile korunur<br>
-        • Firebase güvenlik kuralları ile erişim kontrolü<br>
-        • HTTPS ile güvenli veri aktarımı<br>
-        • RevenueCat ile güvenli abonelik yönetimi
-      </div>
+        <h2>1. Genel Bilgiler</h2>
+        <p>Ehliyet Rehberim uygulaması ("Uygulama"), TurkmenApps ("Biz", "Bizim", "Şirket") tarafından geliştirilmiş ve işletilmektedir. Bu gizlilik politikası, uygulamayı kullanırken kişisel verilerinizin nasıl toplandığını, kullanıldığını ve korunduğunu açıklamaktadır.</p>
 
-      <h3>4. Üçüncü Taraf Hizmetler</h3>
-      <p>Uygulamamız aşağıdaki güvenilir üçüncü taraf hizmetleri kullanır:</p>
-      <ul>
-        <li><strong>Firebase Auth:</strong> Güvenli kullanıcı girişi için</li>
-        <li><strong>Google Sign-In:</strong> Hızlı giriş için</li>
-        <li><strong>Apple Sign-In:</strong> iOS kullanıcıları için güvenli giriş</li>
-        <li><strong>RevenueCat:</strong> Pro abonelik yönetimi için</li>
-        <li><strong>AdMob:</strong> Ücretsiz sürümde reklam gösterimi için</li>
-        <li><strong>Google Analytics:</strong> Anonim kullanım analizi için</li>
-      </ul>
-
-      <h3>5. Pro Abonelik ve Ödemeler</h3>
-      <p>Pro abonelik işlemleri için:</p>
-      <ul>
-        <li>Ödeme işlemleri App Store/Google Play tarafından gerçekleştirilir</li>
-        <li>Ödeme bilgileri bizimle paylaşılmaz</li>
-        <li>Abonelik durumu RevenueCat üzerinden güvenli şekilde yönetilir</li>
-        <li>İstediğiniz zaman aboneliğinizi iptal edebilirsiniz</li>
-      </ul>
-
-      <div class="warning">
-        <strong>⚠️ Önemli Bilgi:</strong><br>
-        Pro aboneliği: 1 gün ücretsiz deneme, sonrası ayda 49.99 TL. İstediğiniz zaman iptal edebilirsiniz.
-      </div>
-
-      <h3>6. Veri Paylaşımı</h3>
-      <p>Kişisel verileriniz aşağıdaki durumlar dışında üçüncü taraflarla paylaşılmaz:</p>
-      <ul>
-        <li>Yasal gereklilikler</li>
-        <li>Güvenlik ihlallerini önlemek</li>
-        <li>Hizmet sağlayıcılarımızın teknik destek sağlaması</li>
-      </ul>
-
-      <h3>7. Kullanıcı Hakları</h3>
-      <p>KVKK ve GDPR kapsamında aşağıdaki haklara sahipsiniz:</p>
-      <ul>
-        <li><strong>Erişim Hakkı:</strong> Verilerinize erişim talep edebilirsiniz</li>
-        <li><strong>Düzeltme Hakkı:</strong> Yanlış verilerin düzeltilmesini isteyebilirsiniz</li>
-        <li><strong>Silme Hakkı:</strong> Verilerinizin silinmesini talep edebilirsiniz</li>
-        <li><strong>Taşınabilirlik:</strong> Verilerinizi başka servislere aktarabilirsiniz</li>
-        <li><strong>İtiraz Hakkı:</strong> Veri işlemeye itiraz edebilirsiniz</li>
-      </ul>
-
-      <h3>8. Çocukların Gizliliği</h3>
-      <p>Ehliyet Rehberim uygulaması 13 yaş altı çocuklardan bilerek kişisel veri toplamaz. Eğer 13 yaş altı bir çocuğun verilerini topladığımızı öğrenirsek, bu verileri derhal sileriz.</p>
-
-      <h3>9. Reklam ve Analitik</h3>
-      <p>Ücretsiz sürümde:</p>
-      <ul>
-        <li>AdMob reklamları gösterilir</li>
-        <li>Reklamlar kişiselleştirilmemiştir</li>
-        <li>Reklam tıklama verileri anonim olarak toplanır</li>
-        <li>Pro sürümde tüm reklamlar kaldırılır</li>
-      </ul>
-
-      <h3>10. Veri Güvenliği</h3>
-      <p>Verilerinizi korumak için aldığımız önlemler:</p>
-      <ul>
-        <li>SSL/TLS şifreleme ile güvenli veri aktarımı</li>
-        <li>Düzenli güvenlik güncellemeleri</li>
-        <li>Erişim kontrolü ve izleme</li>
-        <li>Güvenlik açığı testleri</li>
-      </ul>
-
-      <h3>11. Politika Değişiklikleri</h3>
-      <p>Bu gizlilik politikası güncellenebilir. Önemli değişiklikler olduğunda:</p>
-      <ul>
-        <li>Uygulama içinde bildirim alacaksınız</li>
-        <li>E-posta ile bilgilendirileceksiniz</li>
-        <li>30 gün önceden duyuru yapılır</li>
-      </ul>
-
-      <h3>12. İletişim ve Veri Talepleriniz</h3>
-      <p>Gizlilik politikamız hakkında sorularınız veya veri talepleriniz için:</p>
-      <ul>
-        <li><strong>E-posta:</strong> privacy@ehliyetrehberim.app</li>
-        <li><strong>Geliştirici:</strong> Ümmügülsün Türkmen</li>
-        <li><strong>Web Sitesi:</strong> https://ummugulsun.me</li>
-        <li><strong>Yanıt Süresi:</strong> 30 gün içinde</li>
-      </ul>
-
-      <div class="contact-info">
-        <h3>📞 İletişim</h3>
-        <p>Gizlilik politikamız hakkında sorularınız için bizimle iletişime geçebilirsiniz.</p>
+        <h2>2. Toplanan Veriler</h2>
         
-        <a href="#" class="back-to-app">
-          📱 Uygulamayı İndir
-        </a>
-        
-        <a href="https://ummugulsun.me" class="back-to-portfolio">
-          ← Portfolio'ya Dön
-        </a>
-      </div>
-    </div>
+        <h3>2.1 Otomatik Olarak Toplanan Veriler</h3>
+        <ul>
+            <li><strong>Cihaz Bilgileri:</strong> İşletim sistemi, model, benzersiz cihaz tanımlayıcıları</li>
+            <li><strong>Kullanım Verileri:</strong> Uygulama içi aktiviteler, oturum süreleri, tıklama verileri</li>
+            <li><strong>Teknik Veriler:</strong> IP adresi, tarayıcı türü, dil tercihleri</li>
+            <li><strong>Çökme Raporları:</strong> Uygulama hatalarını düzeltmek için Firebase Crashlytics</li>
+        </ul>
 
-    <div class="footer">
-      <p>© 2025 Ehliyet Rehberim. Tüm hakları saklıdır.</p>
-      <p>Bu belge Türkiye Cumhuriyeti yasalarına ve KVKK'ya uygun olarak hazırlanmıştır.</p>
-      <p><strong>Son Güncelleme:</strong> 15 Ocak 2025</p>
+        <h3>2.2 Kullanıcı Tarafından Sağlanan Veriler</h3>
+        <ul>
+            <li><strong>Hesap Bilgileri:</strong> Google veya Apple ile giriş yaptığınızda ad, e-posta</li>
+            <li><strong>İlerleme Verileri:</strong> Quiz sonuçları, başarı istatistikleri</li>
+            <li><strong>Tercih Verileri:</strong> Uygulama ayarları, özelleştirmeler</li>
+        </ul>
+
+        <h3>2.3 Üçüncü Taraf Verileri</h3>
+        <table class="data-table">
+            <tr>
+                <th>Hizmet</th>
+                <th>Amaç</th>
+                <th>Veri Türü</th>
+            </tr>
+            <tr>
+                <td>Firebase Analytics</td>
+                <td>Kullanım analizi</td>
+                <td>Anonim kullanım verileri</td>
+            </tr>
+            <tr>
+                <td>Google AdMob</td>
+                <td>Reklam gösterimi</td>
+                <td>Reklam ID, kullanıcı tercihleri</td>
+            </tr>
+            <tr>
+                <td>RevenueCat</td>
+                <td>Satın alma işlemleri</td>
+                <td>Satın alma geçmişi</td>
+            </tr>
+        </table>
+
+        <h2>3. Verilerin Kullanım Amaçları</h2>
+        
+        <h3>3.1 Hizmet Sağlama</h3>
+        <ul>
+            <li>Quiz deneyimini kişiselleştirme</li>
+            <li>İlerleme kaydetme ve senkronizasyon</li>
+            <li>Kullanıcı hesabı yönetimi</li>
+        </ul>
+
+        <h3>3.2 Uygulama İyileştirme</h3>
+        <ul>
+            <li>Performans analizi ve optimizasyon</li>
+            <li>Hata tespiti ve düzeltme</li>
+            <li>Yeni özellik geliştirme</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>🎯 Reklam Gösterimi:</strong> Kişiselleştirilmiş reklamlar (Google AdMob), reklam performansı ölçümü ve fraud koruması için veri kullanılır.
+        </div>
+
+        <h2>4. Veri Paylaşımı</h2>
+        
+        <h3>4.1 Üçüncü Taraf Hizmet Sağlayıcıları</h3>
+        
+        <div class="contact-info">
+            <p><strong>Firebase (Google):</strong> Kimlik doğrulama, veritabanı, analytics | <a href="https://firebase.google.com/support/privacy" target="_blank">Gizlilik Politikası</a></p>
+            <p><strong>Google AdMob:</strong> Reklam gösterimi | <a href="https://support.google.com/admob/answer/6128543" target="_blank">Gizlilik Politikası</a></p>
+            <p><strong>RevenueCat:</strong> Uygulama içi satın almalar | <a href="https://www.revenuecat.com/privacy" target="_blank">Gizlilik Politikası</a></p>
+        </div>
+
+        <h2>5. Kullanıcı Hakları (KVKK/GDPR)</h2>
+        
+        <h3>5.1 Temel Haklar</h3>
+        <ul>
+            <li><strong>Bilgilendirilme:</strong> Veri işleme hakkında bilgi alma</li>
+            <li><strong>Erişim:</strong> Kişisel verilerinizi görme</li>
+            <li><strong>Düzeltme:</strong> Yanlış verileri düzeltme</li>
+            <li><strong>Silme:</strong> Verilerinizin silinmesini isteme</li>
+            <li><strong>Kısıtlama:</strong> Veri işlemeyi sınırlama</li>
+            <li><strong>Taşınabilirlik:</strong> Verilerinizi başka platforma taşıma</li>
+            <li><strong>İtiraz:</strong> Veri işlemeye itiraz etme</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>📧 Hak Kullanımı:</strong> Haklarınızı kullanmak için ugturkmen.dev@gmail.com adresine yazın. Talep süresi: 30 gün içinde yanıt.
+        </div>
+
+        <h2>6. Çocukların Gizliliği</h2>
+        <p>Uygulamamız 16 yaş altındaki kullanıcılardan bilerek kişisel veri toplamaz. 16 yaş altı kullanıcı tespit edilirse, veriler derhal silinir.</p>
+
+        <h2>7. Reklam ve Takip</h2>
+        
+        <h3>7.1 AdMob Reklamları</h3>
+        <ul>
+            <li>Google AdMob ile kişiselleştirilmiş reklamlar</li>
+            <li>Reklam ID kullanımı</li>
+            <li>Kullanıcı davranış analizi</li>
+        </ul>
+
+        <h3>7.2 Opt-out Seçenekleri</h3>
+        <ul>
+            <li><strong>iOS:</strong> Ayarlar > Gizlilik > Apple Advertising</li>
+            <li><strong>Android:</strong> Ayarlar > Google > Reklamlar</li>
+            <li><strong>Uygulama içi:</strong> Pro sürüme geçerek reklamları kaldırma</li>
+        </ul>
+
+        <h2>8. Veri Saklama</h2>
+        
+        <table class="data-table">
+            <tr>
+                <th>Veri Türü</th>
+                <th>Saklama Süresi</th>
+                <th>Silme Koşulu</th>
+            </tr>
+            <tr>
+                <td>Hesap verileri</td>
+                <td>Hesap silinene kadar</td>
+                <td>Kullanıcı talebi</td>
+            </tr>
+            <tr>
+                <td>İlerleme verileri</td>
+                <td>3 yıl pasif hesap sonrası</td>
+                <td>Otomatik silme</td>
+            </tr>
+            <tr>
+                <td>Analitik veriler</td>
+                <td>14 ay (Firebase)</td>
+                <td>Otomatik silme</td>
+            </tr>
+            <tr>
+                <td>Crash logs</td>
+                <td>180 gün</td>
+                <td>Otomatik silme</td>
+            </tr>
+        </table>
+
+        <h2>9. Veri Güvenliği</h2>
+        
+        <h3>9.1 Teknik Güvenlik</h3>
+        <ul>
+            <li><strong>Şifreleme:</strong> HTTPS/TLS protokolleri</li>
+            <li><strong>Kimlik doğrulama:</strong> Firebase Auth</li>
+            <li><strong>Erişim kontrolü:</strong> Role-based access</li>
+            <li><strong>Güvenlik güncellemeleri:</strong> Düzenli güvenlik yamalar</li>
+        </ul>
+
+        <h2>10. Uluslararası Veri Transferi</h2>
+        <p>Verileriniz aşağıdaki ülkelere aktarılabilir:</p>
+        <ul>
+            <li><strong>ABD:</strong> Firebase, AdMob, RevenueCat</li>
+            <li><strong>Avrupa:</strong> Firebase (Dublin)</li>
+        </ul>
+        
+        <div class="highlight">
+            <strong>🛡️ Transfer Güvenceleri:</strong> Adequacy decisions, Standard Contractual Clauses (SCCs), Privacy Shield successor frameworks
+        </div>
+
+        <h2>11. İletişim</h2>
+        <div class="contact-info">
+            <p><strong>Sorularınız için:</strong></p>
+            <p>📧 <strong>E-posta:</strong> ugturkmen.dev@gmail.com</p>
+            <p>👨‍💻 <strong>Geliştirici:</strong> TurkmenApps</p>
+            <p>🛡️ <strong>DPO:</strong> ugturkmen.dev@gmail.com</p>
+        </div>
+
+        <h2>12. Yasal Dayanak (KVKK)</h2>
+        <p>Veri işleme hukuki sebepleri:</p>
+        <ul>
+            <li><strong>Meşru menfaat:</strong> Uygulama geliştirme, hata düzeltme</li>
+            <li><strong>Sözleşme:</strong> Hizmet sağlama</li>
+            <li><strong>Hukuki yükümlülük:</strong> Yasal gereklilikler</li>
+            <li><strong>Açık rıza:</strong> Pazarlama, analytics (varsa)</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>⚖️ Bu politika Türkiye Cumhuriyeti Kişisel Verilerin Korunması Kanunu (KVKK) ve Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR) uyumludur.</strong>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">← Ana Sayfa</a>
+            <a href="terms-of-service.html">Kullanım Şartları</a>
+        </div>
+
+        <div class="contact-info" style="text-align: center; margin-top: 40px;">
+            <p><em>Son güncelleme: 13 Ocak 2025</em></p>
+            <p>© 2025 TurkmenApps - Tüm hakları saklıdır.</p>
+        </div>
     </div>
-  </div>
 </body>
 </html>

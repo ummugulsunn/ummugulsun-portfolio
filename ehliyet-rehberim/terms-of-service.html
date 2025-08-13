@@ -1,413 +1,375 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ehliyet Rehberim - Kullanım Koşulları. Uygulama kullanım şartları ve koşulları.">
-  <meta name="keywords" content="Ehliyet Rehberim, ehliyet sınavı, kullanım koşulları, hizmet şartları">
-  <meta name="author" content="Ümmügülsün Türkmen">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Kullanım Koşulları - Ehliyet Rehberim">
-  <meta property="og:description" content="Ehliyet Rehberim uygulaması kullanım koşulları ve hizmet şartları.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ummugulsun.me/ehliyet-rehberim/terms-of-service.html">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Kullanım Koşulları - Ehliyet Rehberim">
-  <meta name="twitter:description" content="Ehliyet Rehberim kullanım koşulları">
-  
-  <title>Kullanım Koşulları - Ehliyet Rehberim</title>
-  
-  <link rel="canonical" href="https://ummugulsun.me/ehliyet-rehberim/terms-of-service.html">
-  <link rel="icon" type="image/png" href="https://ummugulsun.me/favicon.png">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --primary: #6366F1;
-      --secondary: #8B5CF6;
-      --dark: #080808;
-      --light: #ffffff;
-      --accent: #22C55E;
-      --warning: #F59E0B;
-      --error: #EF4444;
-      --bg-primary: var(--dark);
-      --bg-secondary: #121212;
-      --text-primary: var(--light);
-      --text-secondary: rgba(255,255,255,0.7);
-      --card-bg: rgba(255,255,255,0.05);
-      --border-color: rgba(255,255,255,0.1);
-      --section-heading: #6366F1;
-    }
-
-    [data-theme="light"] {
-      --bg-primary: #ffffff;
-      --bg-secondary: #f5f5f5;
-      --text-primary: #080808;
-      --text-secondary: rgba(0,0,0,0.8);
-      --card-bg: rgba(0,0,0,0.05);
-      --border-color: rgba(0,0,0,0.1);
-      --section-heading: #6B46C1;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Space Grotesk', sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      letter-spacing: 0.2px;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 3rem;
-      padding: 2rem;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 20px;
-      color: white;
-    }
-
-    .header h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .header h2 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      opacity: 0.9;
-    }
-
-    .content {
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 15px;
-      border: 1px solid var(--border-color);
-      margin-bottom: 2rem;
-    }
-
-    .content h3 {
-      color: var(--section-heading);
-      font-size: 1.5rem;
-      margin: 2rem 0 1rem 0;
-      font-weight: 600;
-    }
-
-    .content h3:first-child {
-      margin-top: 0;
-    }
-
-    .content p {
-      margin-bottom: 1rem;
-      color: var(--text-secondary);
-    }
-
-    .content ul {
-      margin: 1rem 0;
-      padding-left: 2rem;
-    }
-
-    .content li {
-      margin-bottom: 0.5rem;
-      color: var(--text-secondary);
-    }
-
-    .important {
-      background: linear-gradient(135deg, #22C55E, #16A34A);
-      color: white;
-      padding: 1rem;
-      border-radius: 10px;
-      margin: 1rem 0;
-      font-weight: 600;
-    }
-
-    .warning {
-      background: linear-gradient(135deg, #F59E0B, #D97706);
-      color: white;
-      padding: 1rem;
-      border-radius: 10px;
-      margin: 1rem 0;
-      font-weight: 600;
-    }
-
-    .error {
-      background: linear-gradient(135deg, #EF4444, #DC2626);
-      color: white;
-      padding: 1rem;
-      border-radius: 10px;
-      margin: 1rem 0;
-      font-weight: 600;
-    }
-
-    .contact-info {
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 15px;
-      border: 1px solid var(--border-color);
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    .back-to-portfolio {
-      display: inline-block;
-      background: var(--primary);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 25px;
-      text-decoration: none;
-      margin-top: 1rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-    }
-
-    .back-to-portfolio:hover {
-      background: var(--secondary);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
-    }
-
-    .back-to-app {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 25px;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .back-to-app:hover {
-      background: #16A34A;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
-    }
-
-    .footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        padding: 1rem;
-      }
-      
-      .header h1 {
-        font-size: 2rem;
-      }
-      
-      .content {
-        padding: 1.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanım Şartları - Ehliyet Rehberim</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2563eb;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #1e40af;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3b82f6;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #374151;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        .update-date {
+            text-align: center;
+            font-style: italic;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+        .contact-info {
+            background-color: #eff6ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .highlight {
+            background-color: #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #f59e0b;
+        }
+        .warning {
+            background-color: #fef2f2;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ef4444;
+        }
+        .success {
+            background-color: #f0fdf4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #22c55e;
+        }
+        .nav-links {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .nav-links a {
+            color: #2563eb;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 20px;
+            border: 2px solid #2563eb;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover {
+            background-color: #2563eb;
+            color: white;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .feature-item {
+            background-color: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .nav-links a {
+                display: block;
+                margin: 5px 0;
+            }
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>📋 Kullanım Koşulları</h1>
-      <h2>Ehliyet Rehberim - Sınav Hazırlık Uygulaması</h2>
-    </div>
-    
-    <div class="content">
-      <h3>1. Hizmet Kabulu</h3>
-      <p>Ehliyet Rehberim uygulamasını indirerek ve kullanarak, bu kullanım koşullarını okuduğunuzu, anladığınızı ve kabul ettiğinizi beyan edersiniz. Bu koşulları kabul etmiyorsanız, lütfen uygulamayı kullanmayınız.</p>
+    <div class="container">
+        <div class="nav-links">
+            <a href="index.html">← Ana Sayfa</a>
+            <a href="privacy-policy.html">Gizlilik Politikası</a>
+        </div>
 
-      <h3>2. Hizmet Tanımı</h3>
-      <p>Ehliyet Rehberim, Türkiye'deki ehliyet sınavlarına hazırlık amacıyla tasarlanmış bir mobil uygulamadır. Uygulamamız şunları sunar:</p>
-      <ul>
-        <li><strong>20 Deneme Sınavı:</strong> Gerçek sınav formatında pratik yapma imkanı</li>
-        <li><strong>1000+ Soru:</strong> Güncel ehliyet sınavı soruları</li>
-        <li><strong>Konu Anlatımları:</strong> Detaylı açıklamalar ve öğrenme materyalleri</li>
-        <li><strong>İlerleme Takibi:</strong> Kişisel performans analizi</li>
-        <li><strong>Trafik İşaretleri:</strong> Görsel ve interaktif öğrenme</li>
-      </ul>
+        <h1>📋 Kullanım Şartları</h1>
+        <div class="update-date">
+            <strong>Son Güncelleme Tarihi:</strong> 13 Ocak 2025
+        </div>
 
-      <h3>3. Kullanıcı Hesabı</h3>
-      <p>Uygulamayı kullanmak için:</p>
-      <ul>
-        <li>Google veya Apple hesabınız ile giriş yapabilirsiniz</li>
-        <li>Hesap bilgilerinizin doğruluğundan siz sorumlusunuz</li>
-        <li>Hesabınızı güvenli tutmakla yükümlüsünüz</li>
-        <li>Hesabınızı başkalarıyla paylaşmamanız gerekir</li>
-      </ul>
+        <div class="contact-info">
+            <h3>📞 İletişim Bilgileri</h3>
+            <p><strong>Uygulama:</strong> Ehliyet Rehberim</p>
+            <p><strong>Geliştirici:</strong> TurkmenApps</p>
+            <p><strong>E-posta:</strong> ugturkmen.dev@gmail.com</p>
+        </div>
 
-      <h3>4. Pro Abonelik ve Ödeme Koşulları</h3>
-      <div class="important">
-        <strong>💎 Pro Abonelik Detayları:</strong><br>
-        • 1 gün ücretsiz deneme süresi<br>
-        • Deneme sonrası: 49.99 TL/ay<br>
-        • İstediğiniz zaman iptal edebilirsiniz<br>
-        • Otomatik yenileme aktiftir
-      </div>
+        <h2>1. Giriş</h2>
+        <p>Bu kullanım şartları ("Şartlar"), TurkmenApps ("Biz", "Şirket") tarafından geliştirilen Ehliyet Rehberim mobil uygulamasının ("Uygulama") kullanımını düzenler. Uygulamayı kullanarak bu şartları kabul etmiş sayılırsınız.</p>
 
-      <p>Pro abonelik şartları:</p>
-      <ul>
-        <li><strong>Ödeme:</strong> App Store veya Google Play Store üzerinden alınır</li>
-        <li><strong>Yenileme:</strong> Abonelik iptal edilene kadar otomatik yenilenir</li>
-        <li><strong>İptal:</strong> Mağaza ayarlarından iptal edebilirsiniz</li>
-        <li><strong>İade:</strong> Apple/Google iade politikalarına tabidir</li>
-        <li><strong>Değişiklik:</strong> Fiyatlar önceden haber verilerek değiştirilebilir</li>
-      </ul>
-
-      <h3>5. Kullanım Kuralları</h3>
-      <p>Uygulamayı kullanırken aşağıdaki davranışlar yasaktır:</p>
-      <ul>
-        <li>Uygulamayı kopyalamak, tersine mühendislik yapmak</li>
-        <li>İçerikleri izinsiz paylaşmak veya çoğaltmak</li>
-        <li>Zararlı yazılım yüklemek veya güvenlik açığı aramak</li>
-        <li>Spam veya otomatik sistemler kullanmak</li>
-        <li>Diğer kullanıcıları rahatsız edici davranışlarda bulunmak</li>
-      </ul>
-
-      <div class="error">
-        <strong>⛔ Yasaklı Kullanım:</strong><br>
-        • Ticari amaçlı kopyalama<br>
-        • İçerik çalma<br>
-        • Sistem güvenliğini tehlikeye atmak<br>
-        • Sahte hesap oluşturmak
-      </div>
-
-      <h3>6. İçerik ve Doğruluk</h3>
-      <p>Uygulama içeriği hakkında:</p>
-      <ul>
-        <li>Sorular en güncel MEB müfredatına göre hazırlanmıştır</li>
-        <li>İçeriklerimiz sürekli güncellenir</li>
-        <li>%100 doğruluk garanti edilemez</li>
-        <li>Gerçek sınav başarısı garanti edilmez</li>
-        <li>İçerikler sadece eğitim amaçlıdır</li>
-      </ul>
-
-      <div class="warning">
-        <strong>⚠️ Önemli Uyarı:</strong><br>
-        Ehliyet Rehberim sadece sınav hazırlığı içindir. Gerçek ehliyet sınavında başarılı olacağınızı garanti etmez. Resmi ehliyet kursu almanız önerilir.
-      </div>
-
-      <h3>7. Fikri Mülkiyet Hakları</h3>
-      <p>Uygulama içindeki tüm içerikler telif hakkı ile korunmaktadır:</p>
-      <ul>
-        <li>Sorular, açıklamalar ve görseller telif hakkı altındadır</li>
-        <li>Uygulamanın tasarımı ve kodu korunmaktadır</li>
-        <li>Marka ve logo kullanım hakları saklıdır</li>
-        <li>İzinsiz kullanım yasal işlem gerektirir</li>
-      </ul>
-
-      <h3>8. Hizmet Sürekliliği</h3>
-      <p>Hizmet garantisi:</p>
-      <ul>
-        <li>%99.9 uptime hedeflenir ancak garanti edilmez</li>
-        <li>Teknik bakımlar önceden duyurulur</li>
-        <li>Beklenmeyen kesintiler olabilir</li>
-        <li>Veri kaybı riskine karşı yedekleme yapılır</li>
-      </ul>
-
-      <h3>9. Sorumluluk Sınırlaması</h3>
-      <p>Yasal sorumluluk sınırları:</p>
-      <ul>
-        <li>Uygulama "olduğu gibi" sunulur</li>
-        <li>Dolaylı zararlardan sorumlu değiliz</li>
-        <li>Maksimum sorumluluk ödediğiniz ücret kadardır</li>
-        <li>Üçüncü taraf zararlarından sorumlu değiliz</li>
-      </ul>
-
-      <h3>10. Veri Yedekleme ve Güvenlik</h3>
-      <p>Verilerinizin güvenliği için:</p>
-      <ul>
-        <li>Düzenli otomatik yedekleme yapılır</li>
-        <li>Şifreleme ile veriler korunur</li>
-        <li>Kendi yedeklemenizi de almanızı öneririz</li>
-        <li>Veri kaybından tam sorumluluk alınmaz</li>
-      </ul>
-
-      <h3>11. Yaş Sınırı</h3>
-      <p>Uygulama kullanım yaşı:</p>
-      <ul>
-        <li>13 yaş altı kullanıcılar ebeveyn izni gerekir</li>
-        <li>18 yaş altı kullanıcılar veli sorumluluğundadır</li>
-        <li>Yaş sınırına uymayan hesaplar kapatılır</li>
-      </ul>
-
-      <h3>12. Hesap Sonlandırma</h3>
-      <p>Hesap kapatma durumları:</p>
-      <ul>
-        <li>Kullanım koşullarını ihlal edenlerin hesabı kapatılır</li>
-        <li>İstediğiniz zaman hesabınızı kapatabilirsiniz</li>
-        <li>Kapatılan hesaplardaki veriler silinir</li>
-        <li>Abonelik iptal işlemleri ayrıca yapılmalıdır</li>
-      </ul>
-
-      <h3>13. Güncelleme ve Değişiklikler</h3>
-      <p>Uygulama güncellemeleri:</p>
-      <ul>
-        <li>Düzenli güncelleme yapılır</li>
-        <li>Yeni özellikler eklenir</li>
-        <li>Güvenlik yamalar otomatik uygulanır</li>
-        <li>Kullanım koşulları güncellenebilir</li>
-      </ul>
-
-      <h3>14. Uygulanacak Hukuk</h3>
-      <p>Hukuki uyuşmazlıklar:</p>
-      <ul>
-        <li>Türkiye Cumhuriyeti yasaları geçerlidir</li>
-        <li>İstanbul mahkemeleri yetkilidir</li>
-        <li>KVKK ve diğer yerel yasalara uyulur</li>
-        <li>Uluslararası kullanıcılar için yerel yasalar da geçerlidir</li>
-      </ul>
-
-      <h3>15. İletişim ve Şikayetler</h3>
-      <p>Herhangi bir sorun veya şikayet için:</p>
-      <ul>
-        <li><strong>E-posta:</strong> support@ehliyetrehberim.app</li>
-        <li><strong>Teknik Destek:</strong> help@ehliyetrehberim.app</li>
-        <li><strong>Yasal İşler:</strong> legal@ehliyetrehberim.app</li>
-        <li><strong>Yanıt Süresi:</strong> 48 saat içinde</li>
-      </ul>
-
-      <div class="contact-info">
-        <h3>📞 İletişim</h3>
-        <p>Kullanım koşulları hakkında sorularınız için bizimle iletişime geçebilirsiniz.</p>
+        <h2>2. Hizmet Tanımı</h2>
         
-        <a href="#" class="back-to-app">
-          📱 Uygulamayı İndir
-        </a>
-        
-        <a href="https://ummugulsun.me" class="back-to-portfolio">
-          ← Portfolio'ya Dön
-        </a>
-      </div>
-    </div>
+        <h3>2.1 Uygulama Amacı</h3>
+        <p>Ehliyet Rehberim, Türkiye'deki sürücü adaylarının ehliyet sınavına hazırlanmasına yardımcı olan eğitim uygulamasıdır.</p>
 
-    <div class="footer">
-      <p>© 2025 Ehliyet Rehberim. Tüm hakları saklıdır.</p>
-      <p>Bu kullanım koşulları Türkiye Cumhuriyeti yasalarına göre hazırlanmıştır.</p>
-      <p><strong>Son Güncelleme:</strong> 15 Ocak 2025</p>
-      <p><strong>Versiyon:</strong> 1.0</p>
+        <h3>2.2 Sunulan Hizmetler</h3>
+        <div class="feature-list">
+            <div class="feature-item">
+                <strong>📝 Deneme Sınavları</strong><br>
+                20 farklı deneme sınavı ve quiz'ler
+            </div>
+            <div class="feature-item">
+                <strong>🚦 Trafik Kuralları</strong><br>
+                Kapsamlı trafik işaretleri eğitimi
+            </div>
+            <div class="feature-item">
+                <strong>📊 İlerleme Takibi</strong><br>
+                Detaylı başarı istatistikleri
+            </div>
+            <div class="feature-item">
+                <strong>⭐ Premium Özellikler</strong><br>
+                Pro sürüm ile gelişmiş özellikler
+            </div>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Önemli:</strong> Bu uygulama <strong>sadece eğitim amaçlıdır</strong>. Resmi ehliyet sınavının yerine geçmez.
+        </div>
+
+        <h2>3. Kullanıcı Hesabı</h2>
+        
+        <h3>3.1 Hesap Oluşturma</h3>
+        <ul>
+            <li>Google veya Apple hesabı ile giriş</li>
+            <li>Doğru bilgi sağlama yükümlülüğü</li>
+            <li>16 yaş üstü kullanım</li>
+        </ul>
+
+        <h3>3.2 Hesap Güvenliği</h3>
+        <ul>
+            <li>Giriş bilgilerini koruma sorumluluğu</li>
+            <li>Yetkisiz kullanım bildirimi</li>
+            <li>Şüpheli aktivite raporu</li>
+        </ul>
+
+        <h2>4. Kabul Edilebilir Kullanım</h2>
+        
+        <h3>4.1 İzin Verilen Kullanım</h3>
+        <div class="success">
+            <ul>
+                <li>✅ Kişisel eğitim amaçlı kullanım</li>
+                <li>✅ İçeriği kişisel çalışma için kaydetme</li>
+                <li>✅ Sosyal paylaşım (yasal sınırlar içinde)</li>
+            </ul>
+        </div>
+
+        <h3>4.2 Yasaklı Aktiviteler</h3>
+        <div class="warning">
+            <ul>
+                <li>❌ Ticari amaçlı kullanım (izin olmadan)</li>
+                <li>❌ İçeriği kopyalama/dağıtma</li>
+                <li>❌ Teknik sistemleri hackleme</li>
+                <li>❌ Spam veya zararlı içerik</li>
+                <li>❌ Yapay zeka ile otomatik yanıt verme</li>
+            </ul>
+        </div>
+
+        <h2>5. Fikri Mülkiyet</h2>
+        
+        <h3>5.1 Uygulama Hakları</h3>
+        <ul>
+            <li>Tüm içerik TurkmenApps'e aittir</li>
+            <li>Sorular, açıklamalar, görseller korumalıdır</li>
+            <li>Kullanıcılara sadece kullanım lisansı verilir</li>
+        </ul>
+
+        <h3>5.2 Üçüncü Taraf İçeriği</h3>
+        <ul>
+            <li>Google AdMob reklamları</li>
+            <li>Firebase hizmetleri</li>
+            <li>Üçüncü taraf kütüphaneleri</li>
+        </ul>
+
+        <h2>6. Pro Sürüm ve Ödemeler</h2>
+        
+        <h3>6.1 Pro Özellikleri</h3>
+        <div class="highlight">
+            <ul>
+                <li>🚫 Reklamların kaldırılması</li>
+                <li>🔓 Sınırsız test erişimi</li>
+                <li>📈 Gelişmiş istatistikler</li>
+                <li>🏆 Öncelikli destek</li>
+            </ul>
+        </div>
+
+        <h3>6.2 Ödeme Şartları</h3>
+        <ul>
+            <li>RevenueCat üzerinden işlenir</li>
+            <li>Apple/Google ödeme politikaları geçerli</li>
+            <li>Fiyatlar değişebilir (bildirimle)</li>
+        </ul>
+
+        <h3>6.3 İade Politikası</h3>
+        <ul>
+            <li>Apple/Google store politikaları geçerli</li>
+            <li>Teknik sorunlar için özel değerlendirme</li>
+            <li>Kötüye kullanım durumunda iade reddedilebilir</li>
+        </ul>
+
+        <h2>7. Gizlilik ve Veriler</h2>
+        <div class="contact-info">
+            <p><strong>📄 Detaylı bilgi için:</strong> <a href="privacy-policy.html">Gizlilik Politikası</a> inceleyiniz.</p>
+        </div>
+
+        <h3>7.1 Veri Kullanımı</h3>
+        <ul>
+            <li>Hizmet iyileştirme</li>
+            <li>Kişiselleştirme</li>
+            <li>Analytics ve performans</li>
+        </ul>
+
+        <h3>7.2 Reklam Verisi</h3>
+        <ul>
+            <li>AdMob ile kişiselleştirilmiş reklamlar</li>
+            <li>Opt-out seçenekleri mevcut</li>
+            <li>Pro sürümde reklamlar kaldırılır</li>
+        </ul>
+
+        <h2>8. Hizmet Değişiklikleri</h2>
+        
+        <h3>8.1 Özellik Güncellemeleri</h3>
+        <ul>
+            <li>Yeni özellikler eklenebilir</li>
+            <li>Mevcut özellikler değiştirilebilir</li>
+            <li>Kritik değişiklikler bildirilir</li>
+        </ul>
+
+        <h3>8.2 Hizmet Sonlandırma</h3>
+        <ul>
+            <li>30 gün önceden bildirim</li>
+            <li>Veri yedekleme imkanı</li>
+            <li>Ödeme iadesi (uygun durumlarda)</li>
+        </ul>
+
+        <h2>9. Sorumluluk Sınırlamaları</h2>
+        
+        <h3>9.1 Hizmet Sınırları</h3>
+        <div class="warning">
+            <ul>
+                <li>"Olduğu gibi" hizmet sunumu</li>
+                <li>Kesintisiz hizmet garantisi yok</li>
+                <li>%100 doğruluk garantisi yok</li>
+            </ul>
+        </div>
+
+        <h3>9.2 Zarar Sınırlamaları</h3>
+        <ul>
+            <li>Maksimum sorumluluk: Ödenen tutar</li>
+            <li>Dolaylı zarar sorumluluğu yok</li>
+            <li>İş kaybı sorumluluğu yok</li>
+        </ul>
+
+        <h2>10. Yasal Uyumluluk</h2>
+        
+        <h3>10.1 Geçerli Hukuk</h3>
+        <p>Bu şartlar <strong>Türkiye Cumhuriyeti hukukuna</strong> tabidir.</p>
+
+        <h3>10.2 Yetki</h3>
+        <p><strong>İstanbul Mahkemeleri ve İcra Daireleri</strong> yetkilidir.</p>
+
+        <h3>10.3 Uyuşmazlık Çözümü</h3>
+        <ol>
+            <li>Önce dostane çözüm arayışı</li>
+            <li>Gerekirse arabuluculuk</li>
+            <li>Son çare olarak dava</li>
+        </ol>
+
+        <h2>11. Şart Değişiklikleri</h2>
+        
+        <h3>11.1 Güncelleme Hakkı</h3>
+        <p>Bu şartları değiştirme hakkımız saklıdır.</p>
+
+        <h3>11.2 Bildirim</h3>
+        <ul>
+            <li>Uygulama içi bildirim</li>
+            <li>E-posta (varsa)</li>
+            <li>7 gün önceden bildirim</li>
+        </ul>
+
+        <h2>12. İletişim ve Destek</h2>
+        
+        <div class="contact-info">
+            <h3>🛠️ Teknik Destek</h3>
+            <p><strong>E-posta:</strong> ugturkmen.dev@gmail.com</p>
+            <p><strong>Yanıt süresi:</strong> 2-5 iş günü</p>
+            <p><strong>Çalışma saatleri:</strong> 09:00-17:00</p>
+        </div>
+
+        <div class="contact-info">
+            <h3>⚖️ Yasal Bildirimleri</h3>
+            <p><strong>E-posta:</strong> ugturkmen.dev@gmail.com</p>
+            <p><strong>Konu başlığı:</strong> "Yasal Bildirim"</p>
+        </div>
+
+        <div class="highlight">
+            <strong>📞 İş Birliği Teklifleri:</strong>
+            <ul style="margin-top: 10px;">
+                <li>İş ortaklığı</li>
+                <li>İçerik lisanslama</li>
+                <li>Kurumsal anlaşmalar</li>
+            </ul>
+        </div>
+
+        <div class="success">
+            <strong>⚖️ Bu kullanım şartları Türkiye Cumhuriyeti mevzuatı uyumludur.</strong>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">← Ana Sayfa</a>
+            <a href="privacy-policy.html">Gizlilik Politikası</a>
+        </div>
+
+        <div class="contact-info" style="text-align: center; margin-top: 40px;">
+            <p><em>Bu şartlar 13 Ocak 2025 tarihinde güncellenmiştir ve o tarihten itibaren geçerlidir.</em></p>
+            <p>© 2025 TurkmenApps - Tüm hakları saklıdır.</p>
+        </div>
     </div>
-  </div>
 </body>
 </html>
