@@ -45,7 +45,7 @@ function TabBar() {
         className="flex items-center gap-2 px-3 py-1 bg-[var(--color-editor-bg)] rounded-t-md border-t-2 border-[var(--color-accent-primary)] text-sm"
       >
         <FileCode size={14} />
-        <span>hero.tsx</span>
+        <span>profile.tsx</span>
       </motion.div>
     </div>
   );
@@ -57,9 +57,9 @@ function EditorContent() {
       {/* Line 1 */}
       <CodeLine lineNumber={1} delay={0.4}>
         <span className="syntax-purple">import</span>{" "}
-        <span className="syntax-blue">{"{ Developer }"}</span>{" "}
+        <span className="syntax-blue">{"{ Student }"}</span>{" "}
         <span className="syntax-purple">from</span>{" "}
-        <span className="syntax-green">&quot;@universe/talented-people&quot;</span>
+        <span className="syntax-green">&quot;@university/engineering&quot;</span>
         <span className="syntax-pink">;</span>
       </CodeLine>
 
@@ -71,10 +71,10 @@ function EditorContent() {
       {/* Line 3 */}
       <CodeLine lineNumber={3} delay={0.6}>
         <span className="syntax-purple">const</span>{" "}
-        <span className="syntax-cyan">developer</span>{" "}
+        <span className="syntax-cyan">profile</span>{" "}
         <span className="syntax-pink">=</span>{" "}
         <span className="syntax-purple">new</span>{" "}
-        <span className="syntax-blue">Developer</span>
+        <span className="syntax-blue">Student</span>
         <span className="syntax-pink">({"{"}</span>
       </CodeLine>
 
@@ -91,9 +91,9 @@ function EditorContent() {
       {/* Line 5 */}
       <CodeLine lineNumber={5} delay={0.8}>
         <span className="ml-8">
-          <span className="syntax-cyan">role</span>
+          <span className="syntax-cyan">type</span>
           <span className="syntax-pink">:</span>{" "}
-          <span className="syntax-green">&quot;Senior Frontend Architect&quot;</span>
+          <span className="syntax-green">&quot;Computer Engineering Student&quot;</span>
           <span className="syntax-pink">,</span>
         </span>
       </CodeLine>
@@ -101,9 +101,15 @@ function EditorContent() {
       {/* Line 6 */}
       <CodeLine lineNumber={6} delay={0.9}>
         <span className="ml-8">
-          <span className="syntax-cyan">passion</span>
+          <span className="syntax-cyan">focus</span>
           <span className="syntax-pink">:</span>{" "}
-          <span className="syntax-green">&quot;Building beautiful experiences&quot;</span>
+          <span className="syntax-pink">[</span>
+          <span className="syntax-green">&quot;Computer Vision&quot;</span>
+          <span className="syntax-pink">,</span>{" "}
+          <span className="syntax-green">&quot;Mobile Apps&quot;</span>
+          <span className="syntax-pink">,</span>{" "}
+          <span className="syntax-green">&quot;Web Systems&quot;</span>
+          <span className="syntax-pink">]</span>
           <span className="syntax-pink">,</span>
         </span>
       </CodeLine>
@@ -114,13 +120,13 @@ function EditorContent() {
           <span className="syntax-cyan">stack</span>
           <span className="syntax-pink">:</span>{" "}
           <span className="syntax-pink">[</span>
-          <span className="syntax-green">&quot;React&quot;</span>
+          <span className="syntax-green">&quot;Python&quot;</span>
+          <span className="syntax-pink">,</span>{" "}
+          <span className="syntax-green">&quot;Java&quot;</span>
+          <span className="syntax-pink">,</span>{" "}
+          <span className="syntax-green">&quot;Swift&quot;</span>
           <span className="syntax-pink">,</span>{" "}
           <span className="syntax-green">&quot;Next.js&quot;</span>
-          <span className="syntax-pink">,</span>{" "}
-          <span className="syntax-green">&quot;TypeScript&quot;</span>
-          <span className="syntax-pink">,</span>{" "}
-          <span className="syntax-green">&quot;Tailwind&quot;</span>
           <span className="syntax-pink">]</span>
           <span className="syntax-pink">,</span>
         </span>
@@ -129,9 +135,9 @@ function EditorContent() {
       {/* Line 8 */}
       <CodeLine lineNumber={8} delay={1.1}>
         <span className="ml-8">
-          <span className="syntax-cyan">motto</span>
+          <span className="syntax-cyan">status</span>
           <span className="syntax-pink">:</span>{" "}
-          <span className="syntax-green">&quot;Code is art, art is code&quot;</span>
+          <span className="syntax-green">&quot;Building, Learning, Creating...&quot;</span>
         </span>
       </CodeLine>
 
@@ -149,15 +155,15 @@ function EditorContent() {
       {/* Line 11 - Comment */}
       <CodeLine lineNumber={11} delay={1.4}>
         <span className="text-[var(--color-text-muted)] italic">
-          // Explore my projects below
+          // Welcome to my digital workspace
         </span>
       </CodeLine>
 
       {/* Line 12 */}
       <CodeLine lineNumber={12} delay={1.5}>
-        <span className="syntax-cyan">developer</span>
+        <span className="syntax-cyan">profile</span>
         <span className="syntax-pink">.</span>
-        <span className="syntax-blue">build</span>
+        <span className="syntax-blue">init</span>
         <span className="syntax-pink">()</span>
         <span className="syntax-pink">;</span>
       </CodeLine>
