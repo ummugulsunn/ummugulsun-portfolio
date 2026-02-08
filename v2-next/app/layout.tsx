@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Fira_Code } from "next/font/google";
 import "./globals.css";
+import Sidebar from "@/components/Sidebar";
+import TabBar from "@/components/TabBar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -16,36 +18,37 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Ümmügülsün Türkmen | The Zen Editor",
-  description: "Senior Frontend Developer & Creative Coder. Code is art, art is code.",
-  keywords: ["Ümmügülsün Türkmen", "Frontend Developer", "Portfolio", "Web Development", "TypeScript", "Next.js"],
+  title: "Ümmügülsün Türkmen | Portfolio",
+  description:
+    "Computer Engineering Student. Building at the intersection of AI, mobile & web.",
+  keywords: [
+    "Ümmügülsün Türkmen",
+    "Computer Engineering",
+    "Portfolio",
+    "AI",
+    "Mobile Development",
+    "Web Development",
+  ],
   authors: [{ name: "Ümmügülsün Türkmen" }],
   creator: "Ümmügülsün Türkmen",
-  publisher: "Ümmügülsün Türkmen",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://ummugulsun.me",
-    title: "Ümmügülsün Türkmen | The Zen Editor",
-    description: "Senior Frontend Developer & Creative Coder. Code is art, art is code.",
-    siteName: "Ümmügülsün Türkmen Portfolio",
+    title: "Ümmügülsün Türkmen | Portfolio",
+    description:
+      "Computer Engineering Student. Building at the intersection of AI, mobile & web.",
+    siteName: "Ümmügülsün Türkmen",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ümmügülsün Türkmen | The Zen Editor",
-    description: "Senior Frontend Developer & Creative Coder. Code is art, art is code.",
-    creator: "@ummugulsun",
+    title: "Ümmügülsün Türkmen | Portfolio",
+    description:
+      "Computer Engineering Student. Building at the intersection of AI, mobile & web.",
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
 };
 
@@ -61,7 +64,15 @@ export default function RootLayout({
         <meta name="theme-color" content="#0d1117" />
       </head>
       <body className="antialiased">
-        {children}
+        <div className="flex h-screen bg-[var(--color-editor-bg)] text-[var(--color-text-primary)]">
+          <Sidebar />
+          <div className="flex-1 flex flex-col overflow-hidden min-w-0">
+            <TabBar />
+            <main className="flex-1 overflow-y-auto pb-16 md:pb-0">
+              {children}
+            </main>
+          </div>
+        </div>
       </body>
     </html>
   );
