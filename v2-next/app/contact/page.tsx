@@ -164,18 +164,18 @@ export default function ContactPage() {
             <span className="syntax-cyan">&quot;linkedin&quot;</span>
             <span className="syntax-pink">:</span>{" "}
             <a
-              href="https://www.linkedin.com/in/%C3%BCmm%C3%BCg%C3%BCls%C3%BCn-t-306904257/"
+              href="https://www.linkedin.com/in/ummugulsunturkmen"
               className="syntax-green hover:underline decoration-2"
               target="_blank"
               rel="noopener noreferrer"
             >
-              &quot;linkedin.com/in/ümmügülsün-t&quot;
+              &quot;linkedin.com/in/ummugulsunturkmen&quot;
             </a>
             <span className="syntax-pink">,</span>
             <button
               onClick={() =>
                 copyToClipboard(
-                  "https://www.linkedin.com/in/%C3%BCmm%C3%BCg%C3%BCls%C3%BCn-t-306904257/",
+                  "https://www.linkedin.com/in/ummugulsunturkmen",
                   "linkedin"
                 )
               }

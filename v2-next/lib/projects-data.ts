@@ -16,8 +16,7 @@ export const projects: Project[] = [
     description:
       "Full-featured driving license exam prep app published on Google Play with a 5.0 star rating. Includes timed practice exams, progress tracking, and offline support.",
     tech: ["Flutter", "Dart", "Firebase", "Google Play"],
-    image:
-      "https://images.unsplash.com/photo-1449965408869-ebd13bc9e5c8?w=800&h=600&fit=crop&q=80",
+    image: "/assets/images/app_logo.png",
     github: "https://github.com/ummugulsunn/ehliyet-rehberim",
     year: 2025,
   },

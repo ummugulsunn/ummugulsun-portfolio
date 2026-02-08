@@ -98,7 +98,7 @@ export default function Sidebar() {
             <Github size={18} />
           </a>
           <a
-            href="https://www.linkedin.com/in/%C3%BCmm%C3%BCg%C3%BCls%C3%BCn-t-306904257/"
+            href="https://www.linkedin.com/in/ummugulsunturkmen"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors"

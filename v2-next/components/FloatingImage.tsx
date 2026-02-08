@@ -58,12 +58,12 @@ export default function FloatingImage({ src, alt, isVisible }: FloatingImageProp
         rotate: { duration: 0.3, ease: "easeOut" },
       }}
     >
-      <div className="relative w-[400px] h-[300px] rounded-lg overflow-hidden shadow-2xl border-2 border-[var(--color-editor-border)]">
+      <div className="relative w-[400px] h-[300px] rounded-lg overflow-hidden shadow-2xl border-2 border-[var(--color-editor-border)] bg-[var(--color-editor-bg-secondary)]">
         <Image
           src={src}
           alt={alt}
           fill
-          className="object-cover"
+          className={src.includes("app_logo") ? "object-contain p-4" : "object-cover"}
           unoptimized
         />
         {/* Glow effect */}

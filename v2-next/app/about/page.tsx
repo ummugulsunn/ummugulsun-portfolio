@@ -143,37 +143,16 @@ export default function AboutPage() {
 
         <ML n={22}><span>&nbsp;</span></ML>
 
-        <ML n={23}>
-          <span className="text-lg">
-            <span className="syntax-pink">###</span>{" "}
-            <span className="font-bold syntax-blue">
-              Associate Degree in Computer Programming
-            </span>
-          </span>
-        </ML>
-
-        <ML n={24}>
-          <span className="text-lg">
-            <span className="syntax-cyan">Dokuz Eylul University</span>{" "}
-            <span className="syntax-pink">|</span>{" "}
-            <span className="italic text-[var(--color-text-secondary)]">
-              2024 – 2026
-            </span>
-          </span>
-        </ML>
-
-        <ML n={25}><span>&nbsp;</span></ML>
-
         {/* Experience */}
-        <ML n={26}>
+        <ML n={23}>
           <span className="text-2xl md:text-3xl font-semibold syntax-purple">
             ## Experience
           </span>
         </ML>
 
-        <ML n={27}><span>&nbsp;</span></ML>
+        <ML n={24}><span>&nbsp;</span></ML>
 
-        <ML n={28}>
+        <ML n={25}>
           <span className="text-lg">
             <span className="syntax-pink">###</span>{" "}
             <span className="font-bold syntax-blue">
@@ -184,7 +163,7 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={29}>
+        <ML n={26}>
           <span className="text-lg">
             <span className="italic text-[var(--color-text-secondary)]">
               June 2025 – July 2025
@@ -194,9 +173,9 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={30}><span>&nbsp;</span></ML>
+        <ML n={27}><span>&nbsp;</span></ML>
 
-        <ML n={31}>
+        <ML n={28}>
           <span className="text-lg">
             <span className="syntax-pink">-</span> Developed proficiency in{" "}
             <span className="syntax-orange">Python</span> programming for data
@@ -204,7 +183,7 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={32}>
+        <ML n={29}>
           <span className="text-lg">
             <span className="syntax-pink">-</span> Enhanced design skills using{" "}
             <span className="syntax-orange">Adobe Photoshop</span> for visual
@@ -212,7 +191,7 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={33}>
+        <ML n={30}>
           <span className="text-lg">
             <span className="syntax-pink">-</span> Gained expertise in{" "}
             <span className="syntax-orange">Excel</span> for data management and
@@ -220,7 +199,7 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={34}>
+        <ML n={31}>
           <span className="text-lg">
             <span className="syntax-pink">-</span> Learned{" "}
             <span className="syntax-orange">AutoCAD</span> fundamentals for
@@ -228,9 +207,9 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={35}><span>&nbsp;</span></ML>
+        <ML n={32}><span>&nbsp;</span></ML>
 
-        <ML n={36}>
+        <ML n={33}>
           <span className="text-lg">
             <span className="syntax-pink">###</span>{" "}
             <span className="font-bold syntax-blue">Merchandiser</span>{" "}
@@ -239,7 +218,7 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={37}>
+        <ML n={34}>
           <span className="text-lg">
             <span className="italic text-[var(--color-text-secondary)]">
               July 2024 – October 2024
@@ -249,41 +228,41 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={38}><span>&nbsp;</span></ML>
+        <ML n={35}><span>&nbsp;</span></ML>
 
-        <ML n={39}>
+        <ML n={36}>
           <span className="text-lg">
             <span className="syntax-pink">-</span> Managed product inventory and
             merchandising at a family-run business
           </span>
         </ML>
 
-        <ML n={40}>
+        <ML n={37}>
           <span className="text-lg">
             <span className="syntax-pink">-</span> Improved customer-facing
             display performance
           </span>
         </ML>
 
-        <ML n={41}>
+        <ML n={38}>
           <span className="text-lg">
             <span className="syntax-pink">-</span> Gained experience in
             multitasking, teamwork, and logistics
           </span>
         </ML>
 
-        <ML n={42}><span>&nbsp;</span></ML>
+        <ML n={39}><span>&nbsp;</span></ML>
 
         {/* Certifications */}
-        <ML n={43}>
+        <ML n={40}>
           <span className="text-2xl md:text-3xl font-semibold syntax-purple">
             ## Certifications
           </span>
         </ML>
 
-        <ML n={44}><span>&nbsp;</span></ML>
+        <ML n={41}><span>&nbsp;</span></ML>
 
-        <ML n={45}>
+        <ML n={42}>
           <span className="text-lg">
             <span className="syntax-pink">-</span>{" "}
             <span className="font-bold syntax-cyan">
@@ -292,7 +271,7 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={46}>
+        <ML n={43}>
           <span className="text-lg ml-4">
             <span className="text-[var(--color-text-secondary)]">
               DeepLearning.AI, Stanford University
@@ -304,9 +283,9 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={47}><span>&nbsp;</span></ML>
+        <ML n={44}><span>&nbsp;</span></ML>
 
-        <ML n={48}>
+        <ML n={45}>
           <span className="text-lg">
             <span className="syntax-pink">-</span>{" "}
             <span className="font-bold syntax-cyan">
@@ -315,7 +294,7 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={49}>
+        <ML n={46}>
           <span className="text-lg ml-4">
             <span className="text-[var(--color-text-secondary)]">Google</span>{" "}
             <span className="syntax-pink">|</span>{" "}
@@ -325,9 +304,9 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={50}><span>&nbsp;</span></ML>
+        <ML n={47}><span>&nbsp;</span></ML>
 
-        <ML n={51}>
+        <ML n={48}>
           <span className="text-lg">
             <span className="syntax-pink">-</span>{" "}
             <span className="font-bold syntax-cyan">
@@ -340,7 +319,7 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={52}>
+        <ML n={49}>
           <span className="text-lg">
             <span className="syntax-pink">-</span>{" "}
             <span className="font-bold syntax-cyan">
@@ -353,24 +332,24 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={53}><span>&nbsp;</span></ML>
+        <ML n={50}><span>&nbsp;</span></ML>
 
         {/* Skills */}
-        <ML n={54}>
+        <ML n={51}>
           <span className="text-2xl md:text-3xl font-semibold syntax-purple">
             ## Skills
           </span>
         </ML>
 
-        <ML n={55}><span>&nbsp;</span></ML>
+        <ML n={52}><span>&nbsp;</span></ML>
 
-        <ML n={56}>
+        <ML n={53}>
           <span className="text-xl font-semibold syntax-blue">
             ### Programming Languages
           </span>
         </ML>
 
-        <ML n={57}>
+        <ML n={54}>
           <span className="text-lg">
             <span className="syntax-orange">Java</span>{" "}
             <span className="syntax-pink">|</span>{" "}
@@ -388,15 +367,15 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={58}><span>&nbsp;</span></ML>
+        <ML n={55}><span>&nbsp;</span></ML>
 
-        <ML n={59}>
+        <ML n={56}>
           <span className="text-xl font-semibold syntax-blue">
             ### Frameworks & Tools
           </span>
         </ML>
 
-        <ML n={60}>
+        <ML n={57}>
           <span className="text-lg">
             <span className="syntax-cyan">Next.js</span>{" "}
             <span className="syntax-pink">|</span>{" "}
@@ -414,15 +393,15 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={61}><span>&nbsp;</span></ML>
+        <ML n={58}><span>&nbsp;</span></ML>
 
-        <ML n={62}>
+        <ML n={59}>
           <span className="text-xl font-semibold syntax-blue">
             ### Key Competencies
           </span>
         </ML>
 
-        <ML n={63}>
+        <ML n={60}>
           <span className="text-lg">
             <span className="syntax-green">OOP Principles</span>{" "}
             <span className="syntax-pink">•</span>{" "}
@@ -436,16 +415,16 @@ export default function AboutPage() {
           </span>
         </ML>
 
-        <ML n={64}><span>&nbsp;</span></ML>
+        <ML n={61}><span>&nbsp;</span></ML>
 
         {/* Footer */}
-        <ML n={65}>
+        <ML n={62}>
           <span className="text-lg text-[var(--color-text-muted)]">---</span>
         </ML>
 
-        <ML n={66}><span>&nbsp;</span></ML>
+        <ML n={63}><span>&nbsp;</span></ML>
 
-        <div className="editor-line-active" data-line={67}>
+        <div className="editor-line-active" data-line={64}>
           <span className="text-lg">
             <span className="text-[var(--color-text-muted)]">Built with</span>{" "}
             <span className="syntax-pink">💜</span>{" "}
