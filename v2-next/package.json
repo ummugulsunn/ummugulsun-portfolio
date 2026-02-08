@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "deploy": "next build && rm -rf ../docs && cp -r out ../docs && touch ../docs/.nojekyll"
+    "deploy": "next build && rm -rf ../docs && cp -r out ../docs && touch ../docs/.nojekyll && echo 'ummugulsun.me' > ../docs/CNAME"
   },
   "dependencies": {
     "framer-motion": "^12.29.0",
