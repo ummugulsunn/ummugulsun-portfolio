@@ -136,9 +136,15 @@ export default function Home() {
           </motion.div>
         </CL>
 
-        <CL n={15}>
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 14 * 0.03, duration: 0.2, ease: "easeOut" }}
+          className="editor-line-active text-xl md:text-2xl lg:text-3xl"
+          data-line={15}
+        >
           <span className="cursor-blink" />
-        </CL>
+        </motion.div>
       </div>
     </div>
   );

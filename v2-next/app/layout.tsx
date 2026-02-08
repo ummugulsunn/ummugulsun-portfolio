@@ -3,6 +3,10 @@ import { Inter, Fira_Code } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import TabBar from "@/components/TabBar";
+import Breadcrumb from "@/components/Breadcrumb";
+import StatusBar from "@/components/StatusBar";
+import CommandPalette from "@/components/CommandPalette";
+import TerminalPanel from "@/components/TerminalPanel";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -68,10 +72,14 @@ export default function RootLayout({
           <Sidebar />
           <div className="flex-1 flex flex-col overflow-hidden min-w-0">
             <TabBar />
+            <Breadcrumb />
             <main className="flex-1 overflow-y-auto pb-16 md:pb-0">
               {children}
             </main>
+            <TerminalPanel />
+            <StatusBar />
           </div>
+          <CommandPalette />
         </div>
       </body>
     </html>

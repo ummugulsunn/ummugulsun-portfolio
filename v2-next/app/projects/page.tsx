@@ -180,13 +180,13 @@ export default function ProjectsPage() {
           <span>&nbsp;</span>
         </L>
 
-        <L n={15 + projects.length * 5}>
+        <div className="editor-line-active text-base md:text-lg lg:text-xl" data-line={15 + projects.length * 5}>
           <span className="syntax-purple">export</span>{" "}
           <span className="syntax-purple">default</span>{" "}
           <span className="syntax-blue">Projects</span>
           <span className="syntax-pink">;</span>
           <span className="cursor-blink" />
-        </L>
+        </div>
       </div>
     </motion.div>
   );

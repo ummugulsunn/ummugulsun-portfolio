@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   FileCode,
@@ -10,17 +11,34 @@ import {
   Linkedin,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const menuItems = [
-  { icon: FileCode, label: "Home", href: "/" },
-  { icon: FolderOpen, label: "Projects", href: "/projects" },
-  { icon: User, label: "About", href: "/about" },
-  { icon: Mail, label: "Contact", href: "/contact" },
+  { icon: FileCode, label: "Home", href: "/", shortcut: "⌘1" },
+  { icon: FolderOpen, label: "Projects", href: "/projects", shortcut: "⌘2" },
+  { icon: User, label: "About", href: "/about", shortcut: "⌘3" },
+  { icon: Mail, label: "Contact", href: "/contact", shortcut: "⌘4" },
 ];
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  // Keyboard shortcuts: Cmd+1-4 for navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey) {
+        const index = parseInt(e.key) - 1;
+        if (index >= 0 && index < menuItems.length) {
+          e.preventDefault();
+          router.push(menuItems[index].href);
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [router]);
 
   return (
     <>
@@ -39,12 +57,12 @@ export default function Sidebar() {
           üt<span className="text-[var(--color-accent-primary)]">.</span>
         </Link>
 
-        {/* Navigation Icons */}
+        {/* Navigation Icons with tooltips */}
         <nav className="flex flex-col items-center gap-1">
           {menuItems.map((item) => {
             const isActive = pathname === item.href;
             return (
-              <Link key={item.href} href={item.href} title={item.label}>
+              <Link key={item.href} href={item.href} className="relative group">
                 <div
                   className={`w-10 h-10 flex items-center justify-center rounded-lg transition-all duration-200 ${
                     isActive
@@ -53,6 +71,15 @@ export default function Sidebar() {
                   }`}
                 >
                   <item.icon size={20} />
+                </div>
+                {/* Tooltip */}
+                <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 px-2.5 py-1.5 bg-[var(--color-editor-bg-secondary)] border border-[var(--color-editor-border)] rounded-md text-xs font-mono text-[var(--color-text-primary)] whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-150 shadow-lg z-50">
+                  {item.label}
+                  {item.shortcut && (
+                    <span className="ml-2 text-[var(--color-text-muted)]">
+                      {item.shortcut}
+                    </span>
+                  )}
                 </div>
               </Link>
             );

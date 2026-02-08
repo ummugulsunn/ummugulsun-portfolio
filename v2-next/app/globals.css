@@ -278,6 +278,26 @@ code, pre {
   user-select: none;
 }
 
+/* Active line highlight - line containing the cursor */
+.editor-line-active {
+  position: relative;
+  padding-left: 3.5rem;
+  min-height: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-left: 2px solid var(--color-accent-primary);
+}
+
+.editor-line-active::before {
+  content: attr(data-line);
+  position: absolute;
+  left: 0;
+  width: 3rem;
+  text-align: right;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  user-select: none;
+}
+
 .cursor-blink {
   display: inline-block;
   width: 2px;
@@ -308,6 +328,14 @@ code, pre {
   }
   
   .editor-line::before {
+    width: 2rem;
+  }
+
+  .editor-line-active {
+    padding-left: 2.5rem;
+  }
+
+  .editor-line-active::before {
     width: 2rem;
   }
 }

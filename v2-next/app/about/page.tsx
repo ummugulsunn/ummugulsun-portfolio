@@ -439,7 +439,7 @@ export default function AboutPage() {
 
         <ML n={66}><span>&nbsp;</span></ML>
 
-        <ML n={67}>
+        <div className="editor-line-active" data-line={67}>
           <span className="text-lg">
             <span className="text-[var(--color-text-muted)]">Built with</span>{" "}
             <span className="syntax-pink">💜</span>{" "}
@@ -452,7 +452,7 @@ export default function AboutPage() {
             </a>
           </span>
           <span className="cursor-blink ml-2" />
-        </ML>
+        </div>
       </div>
     </motion.div>
   );

@@ -263,10 +263,10 @@ export default function ContactPage() {
         </JL>
 
         {/* Closing brace */}
-        <JL n={19}>
+        <div className="editor-line-active text-base md:text-lg" data-line={19}>
           <span className="syntax-pink">{"}"}</span>
           <span className="cursor-blink ml-2" />
-        </JL>
+        </div>
       </div>
 
       {/* Info Box */}
