@@ -1,21 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export', // ✅ Statik HTML dosyaları üret (GitHub Pages için)
+  output: 'export',
   images: {
-    unoptimized: true, // ✅ GitHub Pages resim optimizasyonu yapamaz
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
-      },
-    ],
+    unoptimized: true,
   },
-  // GitHub Pages için base path ayarı (gerekirse)
-  // basePath: '',
-  trailingSlash: true, // ✅ URL'lerde trailing slash (SEO için)
+  basePath: '/ummugulsun-portfolio',
+  assetPrefix: '/ummugulsun-portfolio/',
+  trailingSlash: true,
 };
 
 export default nextConfig;
