@@ -74,9 +74,9 @@ export default function Home() {
             <span className="syntax-pink">,</span>{" "}
             <span className="syntax-green">&quot;Java&quot;</span>
             <span className="syntax-pink">,</span>{" "}
-            <span className="syntax-green">&quot;Swift&quot;</span>
+            <span className="syntax-green">&quot;Flutter&quot;</span>
             <span className="syntax-pink">,</span>{" "}
-            <span className="syntax-green">&quot;Next.js&quot;</span>
+            <span className="syntax-green">&quot;TypeScript&quot;</span>
             <span className="syntax-pink">]</span>
             <span className="syntax-pink">,</span>
           </span>

@@ -382,7 +382,9 @@ export default function AboutPage() {
             <span className="syntax-pink">|</span>{" "}
             <span className="syntax-orange">TypeScript</span>{" "}
             <span className="syntax-pink">|</span>{" "}
-            <span className="syntax-orange">Swift</span>
+            <span className="syntax-orange">Swift</span>{" "}
+            <span className="syntax-pink">|</span>{" "}
+            <span className="syntax-orange">Dart</span>
           </span>
         </ML>
 
@@ -402,11 +404,13 @@ export default function AboutPage() {
             <span className="syntax-pink">|</span>{" "}
             <span className="syntax-cyan">Flutter</span>{" "}
             <span className="syntax-pink">|</span>{" "}
+            <span className="syntax-cyan">Tailwind CSS</span>{" "}
+            <span className="syntax-pink">|</span>{" "}
             <span className="syntax-cyan">Git/GitHub</span>{" "}
             <span className="syntax-pink">|</span>{" "}
             <span className="syntax-cyan">Docker</span>{" "}
             <span className="syntax-pink">|</span>{" "}
-            <span className="syntax-cyan">Arduino</span>
+            <span className="syntax-cyan">Firebase</span>
           </span>
         </ML>
 
@@ -426,7 +430,9 @@ export default function AboutPage() {
             <span className="syntax-pink">•</span>{" "}
             <span className="syntax-green">Algorithm Design</span>{" "}
             <span className="syntax-pink">•</span>{" "}
-            <span className="syntax-green">Machine Learning</span>
+            <span className="syntax-green">Machine Learning</span>{" "}
+            <span className="syntax-pink">•</span>{" "}
+            <span className="syntax-green">Computer Vision</span>
           </span>
         </ML>
 
